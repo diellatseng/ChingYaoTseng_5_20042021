@@ -1,12 +1,12 @@
-const api_url = 'http://localhost:3000/api/cameras/';
-const myProducts = {
+const apiUrl = 'http://localhost:3000/api/cameras/';
+const myProducts = { 
     productList: [],
 };
 let myProductsLength = 0;
 
 //Get all product data from server, put string into myProducts//
 const getProductData = async () => {
-    const response = await fetch(api_url);
+    const response = await fetch(apiUrl);
     const jsonProductData = await response.json();
     myProducts.productList = jsonProductData;
 }
@@ -29,7 +29,7 @@ const createCards = async() => {
         const productPrice = '€ ' + (Number(myProductData[i].price/100).toFixed(2));
         const product   = '<li class="col-6"><div class="card border-light"><img class="card-img-top" src="' 
                         + productImage 
-                        + '" alt=""><div class="card-body px-0"><a class="text-decoration-none text-dark stretched-link" href="product.html?productId=' 
+                        + '" alt=""><div class="card-body px-0"><a class="text-decoration-none text-dark stretched-link" href="product.html?id=' 
                         + productId 
                         + '"><h3 id="productTitle" class="card-title h6 mb-1">'
                         + productName 
