@@ -5,13 +5,13 @@ let myProducts = [];
 const getData = async () => {
     let response = await fetch(apiUrl);
     let jsonData = await response.json();
-    myProducts = jsonData;
+    return myProducts = jsonData;
 }
 
 // For each product in myProducts, create one card//
 const displayProducts = async() => {
     await getData();
-    for (product of myProducts) {
+    for (let product of myProducts) {
         const divProducts   = document.getElementById('divProducts');
         const productPrice  = '€ ' + (Number(product.price/100).toFixed(2));
         const productHtml   = '<li class="col-6"><div class="card border-light"><img class="card-img-top" src="' 

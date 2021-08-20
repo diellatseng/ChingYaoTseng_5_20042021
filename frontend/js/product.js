@@ -45,7 +45,15 @@ const useData = async () => {
         .getElementById('description')
         .textContent = productData.description;
 
-    //Display product lense options into select options //
+    //Display product lenses into option values //
+    let lenses = productData.lenses;
+    let lenseHtml ='<option selected>Choisissez votre lentille</option>';
+    for (let lense of lenses) {
+        lenseHtml += '<option>' + lense + '</option>';
+    }
+    document
+        .getElementById('lenses')
+        .innerHTML = lenseHtml;
     
     //Button "commander" should post data to "panier" page //
 };
