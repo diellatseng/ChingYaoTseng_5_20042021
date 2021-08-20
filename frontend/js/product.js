@@ -18,17 +18,15 @@ const useData = async () => {
         return jsonData;
     })
     
-    //Display product image //
-    document
-        .getElementById("productImage")
-        .innerHTML  = '<img class="img-fluid" src="'
-                    + productData.imageUrl
-                    + '" alt="">';
-
     //Display title according to product name //
     document
         .getElementById('title')
         .textContent = 'Produit | ' + productData.name + ' - Orinoco France';
+
+        //Display product image //
+    document
+        .getElementById("productImage")
+        .innerHTML = `<img class="img-fluid" src="${productData.imageUrl}" alt="">`
 
     //Display product name //                
     document
