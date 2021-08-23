@@ -1,11 +1,26 @@
-let productName = sessionStorage.getItem('name');
-let productLense = sessionStorage.getItem('lense');
-let productPrice = '€ ' + (Number((sessionStorage.getItem('price'))/100).toFixed(2));
-let productImageUrl = sessionStorage.getItem('imageUrl');
+let itemsInCart = '';
+let newProductItem = '';
+
+//Check number of items already in the cart
+let numberOfItems = document.getElementsByClassName('list-group-item').length - 1;
+console.log('Number of items added into cart: ' + numberOfItems);
+saveItemsAddedToCart();
+
+//New entry
+function saveItemsAddedToCart() {
+    itemsInCart = document.getElementById('myCart').innerHTML;
+    let clicks = sessionStorage.getItem('clicks');
+    sessionStorage.setItem(`itemsAdded${clicks}`, itemsInCart)
+    newItemHtml();
+}
 
 //Use session storage data to creat list item
-function addItemToCart() {
-    let productItemHtml = (`
+function newItemHtml() {
+    let productName = sessionStorage.getItem('name');
+    let productLense = sessionStorage.getItem('lense');
+    let productPrice = '€ ' + (Number((sessionStorage.getItem('price'))/100).toFixed(2));
+    let productImageUrl = sessionStorage.getItem('imageUrl');
+    newProductItem = `
     <li class="list-group-item">
         <div class="row py-2">
             <div class="col-4 col-md-3">
@@ -20,18 +35,38 @@ function addItemToCart() {
                 <button type="button" class="btn btn-danger">delete</button>
             </div>
         </div>
-    </li>`)
-
-    document.getElementById('myCart').innerHTML += productItemHtml;
-    // removeLocalStorage();
+    </li>`;
+    getItemsAlreadyInCart();
 }
 
+function getItemsAlreadyInCart(){
+    let clicks = sessionStorage.getItem('clicks');
+    for(let i = 0; i < clicks; i++) {
+        let itemAlreadyInCart = sessionStorage.getItem(`itemsAdded${i + 1}`);
+        itemsInCart += itemAlreadyInCart;
+        console.log('i: ' + i);
+        console.log('clicks: ' + clicks);
+        console.log('itemAlreadyInCart: ' + itemAlreadyInCart);
+    }
+    addNewItemToCart();
+}
+
+function addNewItemToCart() {
+    console.log('New Item' + newProductItem);
+    let renewedCart = itemsInCart + newProductItem;
+    document.getElementById('myCart').innerHtml = renewedCart;
+    console.log('renewedCart: ' + renewedCart);
+    console.log('Item added to cart');
+}
 // function removeLocalStorage(){
 //     localStorage.clear();
 // }
 
 // - Update total price
-// - Update total number of items
 // - Confirm order button
 
-addItemToCart();
+//Display total number of items in the cart
+listedItem = document.getElementsByClassName('list-group-item').length - 1;
+console.log('Number Of Items (updated): ' + listedItem);
+document.getElementById('numberOfItems').textContent = listedItem;
+

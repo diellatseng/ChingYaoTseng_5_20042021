@@ -29,11 +29,25 @@ window.addEventListener('load', (event) => {
             sessionStorage.setItem('price', myProducts.price);
             sessionStorage.setItem('lense', lenseSeleted);
             sessionStorage.setItem('imageUrl', myProducts.imageUrl);
+            countBtnClicks();
             location.href = "cart.html"; //Go to cart.html
             console.log("Button clicked!");
         } else {
             window.alert('Please select lense');
             console.log("Button clicked, user needs to select a lense to proceed.");
+        }
+    }
+
+    //Count button clicks
+    function countBtnClicks() {
+        if (sessionStorage.getItem('clicks') == '') {
+            let i = 0;
+            i++;
+            sessionStorage.setItem('clicks', i);
+        } else {
+            let i = sessionStorage.getItem('clicks');
+            i++;
+            sessionStorage.setItem('clicks', i);
         }
     }
 
