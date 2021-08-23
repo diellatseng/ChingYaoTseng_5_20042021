@@ -1,18 +1,10 @@
 let itemsInCart = '';
 let newProductItem = '';
 
-//Check number of items already in the cart
-let numberOfItems = document.getElementsByClassName('list-group-item').length - 1;
-console.log('Number of items added into cart: ' + numberOfItems);
-saveItemsAddedToCart();
-
-//New entry
-function saveItemsAddedToCart() {
-    itemsInCart = document.getElementById('myCart').innerHTML;
-    let clicks = sessionStorage.getItem('clicks');
-    sessionStorage.setItem(`itemsAdded${clicks}`, itemsInCart)
-    newItemHtml();
-}
+// //Check number of items already in the cart
+// let numberOfItems = document.getElementsByClassName('list-group-item').length - 1;
+// console.log('Number of items added into cart: ' + numberOfItems);
+// saveItemsAddedToCart();
 
 //Use session storage data to creat list item
 function newItemHtml() {
@@ -39,18 +31,6 @@ function newItemHtml() {
     getItemsAlreadyInCart();
 }
 
-function getItemsAlreadyInCart(){
-    let clicks = sessionStorage.getItem('clicks');
-    for(let i = 0; i < clicks; i++) {
-        let itemAlreadyInCart = sessionStorage.getItem(`itemsAdded${i + 1}`);
-        itemsInCart += itemAlreadyInCart;
-        console.log('i: ' + i);
-        console.log('clicks: ' + clicks);
-        console.log('itemAlreadyInCart: ' + itemAlreadyInCart);
-    }
-    addNewItemToCart();
-}
-
 function addNewItemToCart() {
     console.log('New Item' + newProductItem);
     let renewedCart = itemsInCart + newProductItem;
@@ -58,15 +38,12 @@ function addNewItemToCart() {
     console.log('renewedCart: ' + renewedCart);
     console.log('Item added to cart');
 }
+
+// - Display total number of items in the cart
+// - Update total price
+// - Confirm order button
+// - Remove SessionStorage
+
 // function removeLocalStorage(){
 //     localStorage.clear();
 // }
-
-// - Update total price
-// - Confirm order button
-
-//Display total number of items in the cart
-listedItem = document.getElementsByClassName('list-group-item').length - 1;
-console.log('Number Of Items (updated): ' + listedItem);
-document.getElementById('numberOfItems').textContent = listedItem;
-

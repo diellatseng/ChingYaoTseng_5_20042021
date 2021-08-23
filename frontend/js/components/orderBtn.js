@@ -1,6 +1,6 @@
 let lenseSeleted ='';
 
-//Execute the following parts when the page is fully loaded
+//Execute the following codes when the page is fully loaded
 window.addEventListener('load', (event) => {
 
     // Listen to lense change
@@ -8,9 +8,8 @@ window.addEventListener('load', (event) => {
         const lenseList = document.getElementById('lenses');
         lenseList.addEventListener('change', (e) => {
             lenseSeleted = lenseList.options[lenseList.selectedIndex].text;
-            console.log('Current lense: ' + lenseSeleted);
+            console.log(`Current lense: ${lenseSeleted}`);
         });
-        
         console.log('Listening to lense change');
         listenToBtnClick();
     }
@@ -25,32 +24,26 @@ window.addEventListener('load', (event) => {
     //Send lense and product data to local cache
     function addToCart() {
         if(lenseSeleted != '') {
-            sessionStorage.setItem('name', myProducts.name);
-            sessionStorage.setItem('price', myProducts.price);
-            sessionStorage.setItem('lense', lenseSeleted);
-            sessionStorage.setItem('imageUrl', myProducts.imageUrl);
-            countBtnClicks();
-            location.href = "cart.html"; //Go to cart.html
+            //productSaved will be an empty array if there's no items in the cart yet
+            const productSaved = JSON.parse(sessionStorage.getItem('products')) || [];  
+            console.log(productSaved);
+
+            const products = [
+                ...productSaved, 
+                {
+                name: myProducts.name,
+                price: myProducts.price
+            }];
+            sessionStorage.setItem('products', JSON.stringify(products));
+            console.log(`Products saved in sessionStorage: ${sessionStorage.getItem('products')}`);
+            //Go to cart.html
+            location.href = "cart.html"; 
             console.log("Button clicked!");
         } else {
             window.alert('Please select lense');
             console.log("Button clicked, user needs to select a lense to proceed.");
         }
     }
-
-    //Count button clicks
-    function countBtnClicks() {
-        if (sessionStorage.getItem('clicks') == '') {
-            let i = 0;
-            i++;
-            sessionStorage.setItem('clicks', i);
-        } else {
-            let i = sessionStorage.getItem('clicks');
-            i++;
-            sessionStorage.setItem('clicks', i);
-        }
-    }
-
     console.log('Page is fully loaded');
     listenToLenseChange();
   });
