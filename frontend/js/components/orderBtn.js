@@ -25,9 +25,10 @@ window.addEventListener('load', (event) => {
     //Send lense and product data to local cache
     function addToCart() {
         if(lenseSeleted != '') {
-            localStorage.setItem('name', myProducts.name);
-            localStorage.setItem('price', myProducts.price);
-            localStorage.setItem('lense', lenseSeleted);
+            sessionStorage.setItem('name', myProducts.name);
+            sessionStorage.setItem('price', myProducts.price);
+            sessionStorage.setItem('lense', lenseSeleted);
+            sessionStorage.setItem('imageUrl', myProducts.imageUrl);
             location.href = "cart.html"; //Go to cart.html
             console.log("Button clicked!");
         } else {

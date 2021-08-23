@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script async src="js/pages/cart.js"></script>
-    <title id="title"></title>
+    <title id="title">Panier - Orinoco France</title>
 </head>
 <body class="container d-flex flex-column h-100">
     <header>
@@ -41,9 +41,9 @@
         <div>
             <div class="row">
                 <div class="col-lg-5 mb-4 order-lg-last">
-                    <h1 class="h3 text-center text-lg-start mb-0 mt-lg-3 pb-2">Panier (2)</h1>
-                    <ul class="list-group">
-                        <li class="list-group-item">
+                    <h1 class="h3 text-center text-lg-start mb-0 mt-lg-3 pb-2">Panier (<span>2</span>)</h1>
+                    <ul id="myCart" class="list-group d-flex">
+                        <!-- <li class="list-group-item">
                             <div class="row py-2">
                                 <div class="col-4 col-md-3">
                                     <img class="img-fluid" src="/backend/images/vcam_1.jpg" alt="">
@@ -73,9 +73,9 @@
                                     <button type="button" class="btn btn-danger">delete</button>
                                 </div>
                             </div>
-                        </li>
+                        </li> -->
 
-                        <li class="list-group-item d-flex justify-content-between">
+                        <li class="list-group-item d-flex justify-content-between order-last">
                             <p class="mb-0">Total (EUR)</p>
                             <p class="mb-0"><strong>$199.00</strong></p>
                         </li>
