@@ -8,9 +8,9 @@ window.addEventListener('load', (event) => {
         const lenseList = document.getElementById('lenses');
         lenseList.addEventListener('change', (e) => {
             lenseSeleted = lenseList.options[lenseList.selectedIndex].text;
-            console.log(`Current lense: ${lenseSeleted}`);
+            console.log(`[ Current lense: ${lenseSeleted} ]`);
         });
-        console.log('Listening to lense change');
+        console.log('...Listening to lense change');
         listenToBtnClick();
     }
     
@@ -18,7 +18,7 @@ window.addEventListener('load', (event) => {
     function listenToBtnClick(){
         let btn = document.getElementById('btnOrder');
         btn.addEventListener('click', addToCart);
-        console.log('Listening to button click');
+        console.log('...Listening to button click');
     }
     
     //Send lense and product data to local cache
@@ -26,15 +26,18 @@ window.addEventListener('load', (event) => {
         if(lenseSeleted != '') {
             //productSaved will be an empty array if there's no items in the cart yet
             const productSaved = JSON.parse(sessionStorage.getItem('products')) || [];  
-            console.log(productSaved);
+            console.log('...Getting data in sessionStorage');
 
             const products = [
                 ...productSaved, 
                 {
                 name: myProducts.name,
-                price: myProducts.price
+                price: myProducts.price,
+                imageUrl: myProducts.imageUrl,
+                lense: lenseSeleted
             }];
             sessionStorage.setItem('products', JSON.stringify(products));
+            console.log(`[ Product saved ! ]`);
             console.log(`Products saved in sessionStorage: ${sessionStorage.getItem('products')}`);
             //Go to cart.html
             location.href = "cart.html"; 
@@ -44,6 +47,6 @@ window.addEventListener('load', (event) => {
             console.log("Button clicked, user needs to select a lense to proceed.");
         }
     }
-    console.log('Page is fully loaded');
+    console.log('[ Page is fully loaded ]');
     listenToLenseChange();
   });

@@ -1,4 +1,5 @@
 let productId = getProductId();
+let myProducts;
 
 //Get product id from url//
 function getProductId() {
@@ -15,7 +16,7 @@ const getData = async () => {
 // Display product information using data saved in myProducts//
 const displayProducts = async() => {
     try {
-        const myProducts = await getData();
+        myProducts = await getData();
         //Display title according to product name //
         document
             .getElementById('title')
