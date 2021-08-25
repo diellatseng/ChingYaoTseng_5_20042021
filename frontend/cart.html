@@ -41,13 +41,13 @@
         <div>
             <div class="row">
                 <div class="col-lg-5 mb-4 order-lg-last">
-                    <h1 class="h3 text-center text-lg-start mb-0 mt-lg-3 pb-2">Panier ( <span id="totalNumberOfItems"></span> )</h1>
+                    <h1 class="h3 text-center text-lg-start mb-0 my-lg-3 pb-2 pb-lg-0">Panier ( <span id="totalNumberOfItems"></span> )</h1>
                     <ul id="myCart" class="list-group d-flex"></ul>
                 </div>
 
-                <form class="col-lg-7 mt-lg-3 mb-3">
+                <form id="myForm" class="col-lg-7 mb-3">
                     <div class="row g-2 my-3">
-                        <h2>Contact</h2>
+                        <h2 class="mt-lg-0">Contact</h2>
                         <div class="col-md-6">
                             <label for="firstName" class="form-label">Prénom *</label>
                             <input type="text" class="form-control" id="firstName" required>
@@ -67,10 +67,6 @@
                         <div class="col-12">
                             <label for="address" class="form-label">Address *</label>
                             <input type="text" class="form-control" id="address" required>
-                        </div>
-                        <div class="col-12">
-                            <label for="address2" class="form-label">Address 2</label>
-                            <input type="text" class="form-control" id="address2">
                         </div>
                         <div class="col-4">
                             <label for="postalCode" class="form-label">Code postal *</label>
@@ -108,8 +104,8 @@
     </footer>
 
     <script src="js/components/deleteBtn.js"></script>
-    <script src="js/components/confirmOrderBtn.js"></script>
     <script src="js/components/form.js"></script>
+    <script src="js/components/confirmOrderBtn.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>   
 </body>
 </html>
