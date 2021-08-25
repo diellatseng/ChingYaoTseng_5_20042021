@@ -108,5 +108,3 @@ function updateTotalNumberOfItems() {
     .textContent = dataInSessionStorage.length;
     console.log('Total number of items updated.')
 }
-// - Confirm order button
-// - Remove SessionStorage
