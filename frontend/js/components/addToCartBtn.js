@@ -16,7 +16,7 @@ window.addEventListener('load', (event) => {
     
     //Listen to button click
     function listenToBtnClick(){
-        let btn = document.getElementById('btnOrder');
+        let btn = document.getElementById('btnAddToCart');
         btn.addEventListener('click', addToCart);
         console.log('...Listening to button click');
     }
@@ -26,7 +26,7 @@ window.addEventListener('load', (event) => {
         if(lenseSeleted != '') {
             //productSaved will be an empty array if there's no items in the cart yet
             const productSaved = JSON.parse(sessionStorage.getItem('products')) || [];  
-            console.log('...Getting data in sessionStorage');
+            console.log('...Checking data in sessionStorage');
 
             const products = [
                 ...productSaved, 
@@ -40,8 +40,8 @@ window.addEventListener('load', (event) => {
             console.log(`[ Product saved ! ]`);
             console.log(`Products saved in sessionStorage: ${sessionStorage.getItem('products')}`);
             //Go to cart.html
-            location.href = "cart.html"; 
             console.log("Button clicked!");
+            location.href = "cart.html"; 
         } else {
             window.alert('Please select lense');
             console.log("Button clicked, user needs to select a lense to proceed.");
