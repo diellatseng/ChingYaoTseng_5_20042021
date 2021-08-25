@@ -38,7 +38,6 @@ window.addEventListener('load', (event) => {
             }];
             sessionStorage.setItem('products', JSON.stringify(products));
             console.log(`[ Product saved ! ]`);
-            console.log(`Products saved in sessionStorage: ${sessionStorage.getItem('products')}`);
             //Go to cart.html
             console.log("Button clicked!");
             location.href = "cart.html"; 

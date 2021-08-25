@@ -52,6 +52,7 @@ const displayProducts = async() => {
             .getElementById('lenses')
             .innerHTML = lenseHtml;
     } catch(error) {
+        window.alert(error);
         console.log(error);
     }
 };

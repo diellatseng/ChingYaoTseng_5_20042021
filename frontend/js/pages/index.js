@@ -33,6 +33,7 @@ const displayProducts = async() => {
             divProducts.innerHTML += productHtml;
         }
     } catch(error) {
+        window.alert(error);
         console.log(error);
     }
 }
