@@ -31,10 +31,17 @@ myForm.addEventListener('submit', function (e) {
         const jsonData = await response.json();
         orderId = jsonData.orderId;
         console.log(orderId);
+
+        // Remove current sessionStorage (products)
+        sessionStorage.removeItem('products');
+        
+        // Save order Id into sessionStorage
+        sessionStorage.setItem('Order Id', orderId);
+
+        // Redirect to Thank You page
+        location.href = "../../frontend/thankYou.html"; 
     }
-    // Remove current sessionStorage (products)
-    // Save order Id into sessionStorage
-    // Redirect to next page
+
     getData();
 })
 
