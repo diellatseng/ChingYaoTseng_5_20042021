@@ -22,7 +22,7 @@ function removeItem(event) {
     //Update sessionStorage after removing this item
     sessionStorage.setItem('products', JSON.stringify(dataInSessionStorage));
     //Remove element from DOM
-    btnDelete[0].parentElement.parentElement.parentElement.remove();
+    productElement.parentElement.parentElement.remove();
 
     updateSum();
     updateTotalNumberOfItems();
