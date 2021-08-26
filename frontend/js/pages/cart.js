@@ -52,9 +52,8 @@ if (dataInSessionStorage == null || dataInSessionStorage == '') {
         }
         displayCart();
         listenToDeleteButton();
-        updateSum()
+        updateSum();
         updateTotalNumberOfItems()
-        
     });
 }
 
@@ -89,18 +88,17 @@ function disableConfirmButton() {
     console.log('Confirm button disabled');
 }
 
-//Display total price
-function updateSum(){
-    let sum = 0;
-    for(i = 0; i < dataInSessionStorage.length; i++) {
-        sum += dataInSessionStorage[i].price;
-    }
+function updateSum() {
+    const sum = dataInSessionStorage.reduce((total, item) => {
+        return total + item.price;
+      }, 0);
+      
     document
     .getElementById('sum')
     .innerHTML = `<strong>€ ${(Number(sum/100).toFixed(2))}</strong>`;
     console.log('Sum updated.');
 }
-
+        
 function updateTotalNumberOfItems() {
     //Display total number of items that are added to cart
     document
