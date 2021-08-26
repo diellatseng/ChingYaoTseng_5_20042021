@@ -31,6 +31,7 @@ window.addEventListener('load', (event) => {
             const products = [
                 ...productSaved, 
                 {
+                id: myProducts._id,
                 name: myProducts.name,
                 price: myProducts.price,
                 imageUrl: myProducts.imageUrl,

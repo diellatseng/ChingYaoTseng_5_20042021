@@ -1,4 +1,4 @@
-let productId = getProductId();
+const productId = getProductId();
 let myProducts;
 
 //Get product id from url//
@@ -8,8 +8,8 @@ function getProductId() {
 
 // Fetch product data from server//
 const getData = async () => {
-    let response = await fetch(`http://localhost:3000/api/cameras/${productId}`);
-    let jsonData = await response.json();
+    const response = await fetch(`http://localhost:3000/api/cameras/${productId}`);
+    const jsonData = await response.json();
     return jsonData;
 }
 
@@ -43,8 +43,8 @@ const displayProducts = async() => {
             .textContent = myProducts.description;
     
         //Display product lenses into option values //
-        let lenses = myProducts.lenses;
-        let lenseHtml ='<option>Choisissez votre lentille</option>'; //Adding default option to lense list
+        const lenses = myProducts.lenses;
+        let lenseHtml = '<option>Choisissez votre lentille</option>'; //Adding default option to lense list
         for (let lense of lenses) {
             lenseHtml += `<option>${lense}</option>`;
         }

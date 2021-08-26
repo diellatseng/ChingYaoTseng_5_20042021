@@ -1,4 +1,4 @@
-let dataInSessionStorage = JSON.parse(sessionStorage.getItem('products')); // Get data saved in sessionStorage
+const dataInSessionStorage = JSON.parse(sessionStorage.getItem('products')); // Get data saved in sessionStorage
 let cartElement;
 //
 // If sessionStorage is empty, display an empty cart;
