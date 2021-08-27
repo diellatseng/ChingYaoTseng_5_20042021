@@ -36,7 +36,6 @@ if (dataInSessionStorage == null || dataInSessionStorage == '') {
                     </div>
                 </div>
             </li>`;
-            console.log(`List number ${i+1} html created.`)
         }
         console.log('Cart list html ready.')
         return html;

@@ -5,7 +5,6 @@ function listenToDeleteButton() {
     for(i = 0; i < btnDelete.length; i++) {
         let btn = btnDelete[i];
         btn.addEventListener('click', removeItem);
-        console.log(`Event listener added to delete button ${i+1}`);
     }
     console.log('Listening to delete button click...');
 }
