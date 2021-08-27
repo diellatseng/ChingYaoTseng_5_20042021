@@ -16,17 +16,20 @@ window.addEventListener('load', (event) => {
     
     //Listen to button click
     function listenToBtnClick(){
-        let btn = document.getElementById('btnAddToCart');
-        btn.addEventListener('click', addToCart);
+        document
+        .getElementById('btnAddToCart')
+        .addEventListener('click', addToCart);
         console.log('...Listening to button click');
     }
     
-    //Send lense and product data to local cache
+    //Save lense and product data in sessionStorage
     function addToCart() {
-        if(lenseSeleted != '') {
-            //productSaved will be an empty array if there's no items in the cart yet
-            const productSaved = JSON.parse(sessionStorage.getItem('products')) || [];  
+        if(lenseSeleted == '') { //Check if lense is seleted
+            window.alert('Please select lense');
+            console.log("Button clicked, user needs to select a lense to proceed.");
+        } else {
             console.log('...Checking data in sessionStorage');
+            const productSaved = JSON.parse(sessionStorage.getItem('products')) || [];  //productSaved will be an empty array if there's no items in the cart yet
 
             const products = [
                 ...productSaved, 
@@ -42,9 +45,6 @@ window.addEventListener('load', (event) => {
             //Go to cart.html
             console.log("Button clicked!");
             location.href = "cart.html"; 
-        } else {
-            window.alert('Please select lense');
-            console.log("Button clicked, user needs to select a lense to proceed.");
         }
     }
     console.log('[ Page is fully loaded ]');

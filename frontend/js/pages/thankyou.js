@@ -1,4 +1,4 @@
-const myId = sessionStorage.getItem('OrderId');
+const myId = sessionStorage.getItem('orderId');
 document
 .getElementById('orderId')
 .textContent = ` ${myId}`;
