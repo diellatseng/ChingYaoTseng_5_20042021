@@ -62,15 +62,15 @@ function addItem() {
     location.href = "cart.html"; 
 }
 
-// Check if product was already added to cart
+// Check if item has already been added to cart
 function checkCart() {
     const dataInSessionStorage = JSON.parse(sessionStorage.getItem('products')); // Get data saved in sessionStorage
-    const positionOfLenseAdded = dataInSessionStorage.map(x => x.lense).indexOf(lenseSeleted);
-
-    if (positionOfLenseAdded == -1) { //If product does not exist in cart
-        addItem();
-    } else { //If product already exists in cart
-        window.alert('Ce produit est déjà dans votre panier. Veuillez sélectionner une autre lentille ou rechercher un autre produit.');
-        console.log('this product is already added to cart')
+    const result = dataInSessionStorage.filter(checkItem = (object) => { // Filter array dataInSessionStorage
+        return object.id === myProducts._id && object.lense === lenseSeleted; // Find an object that matches incoming product id and incoming lense at the same time, return object found
+    });
+    if(result == ''){ 
+        addItem(); // If retruned object is not defined, add item to cart
+    } else { 
+        window.alert('Ce produit est déjà dans votre panier. Veuillez sélectionner une autre lentille ou rechercher un autre produit.'); // If returned object is found, alert user
     }
 }
