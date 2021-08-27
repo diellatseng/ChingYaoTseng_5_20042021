@@ -30,7 +30,7 @@ window.addEventListener('load', (event) => {
             console.log("Button clicked, user needs to select a lense to proceed.");
         } else {
             console.log('...Checking data in sessionStorage');
-            const productSaved = JSON.parse(sessionStorage.getItem('products')) || [];  //productSaved will be an empty array if there's no items in the cart yet
+            const productSaved = JSON.parse(sessionStorage.getItem('products')) || [];  //if productSaved not provided, default to []
 
             products = [
                 ...productSaved, 
