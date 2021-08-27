@@ -1,9 +1,9 @@
-let btnDelete = document.getElementsByClassName('btn-danger');
+let btnRemove = document.getElementsByClassName('btn-danger');
 
-//Listening to delete button
+//Listening to remove button
 function listenToDeleteButton() {
-    for(i = 0; i < btnDelete.length; i++) {
-        let btn = btnDelete[i];
+    for(i = 0; i < btnRemove.length; i++) {
+        let btn = btnRemove[i];
         btn.addEventListener('click', removeItem);
     }
     console.log('Listening to delete button click...');
