@@ -17,13 +17,8 @@ function removeItem(event) {
     dataInSessionStorage.splice(positionOfItemClicked, 1); //Remove this item from string 'dataInSessionStorage'
     sessionStorage.setItem('products', JSON.stringify(dataInSessionStorage)); //Update sessionStorage after removing this item
     productElement.parentElement.parentElement.remove(); //Remove element from DOM
+    if(dataInSessionStorage.length == 0) disableConfirmButton(); //Disable confirm button if the last item in cart is removed
 
     updateSum();
     updateTotalNumberOfItems();
-    isLastItemRemoved();
-}
-
-// Check if cart is empty after this item is removed
-function isLastItemRemoved(){
-    if(dataInSessionStorage.length == 0) disableConfirmButton(); //Disable confirm button if the last item in cart is removed
 }

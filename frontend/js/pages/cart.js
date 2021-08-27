@@ -1,9 +1,7 @@
 const dataInSessionStorage = JSON.parse(sessionStorage.getItem('products')); // Get data saved in sessionStorage
 let cartElement;
-//
-// If sessionStorage is empty, display an empty cart;
-// if it's not empty, display items (stored in sessionStorage) into cart.
-//
+
+//If sessionStorage is empty, display an empty cart, else display items into cart.
 if (dataInSessionStorage == null || dataInSessionStorage == '') {
     displayEmptyCart();
 } else {
@@ -44,9 +42,7 @@ if (dataInSessionStorage == null || dataInSessionStorage == '') {
     //Execute the following codes when the page is fully loaded (cart list html fully generated)
     window.addEventListener('load', (event) => {
         function displayCart(){
-            document
-            .getElementById('myCart')
-            .innerHTML = cartElement;
+            document.getElementById('myCart').innerHTML = cartElement;
             console.log('Cart list displayed.')
         }
         displayCart();
@@ -56,52 +52,37 @@ if (dataInSessionStorage == null || dataInSessionStorage == '') {
     });
 }
 
+//Display an empty cart when sessionStorage is empty
 function displayEmptyCart() {
-    //Generate html that displays an empty cart
-    cartElement= `
+    cartElement= ` 
     <li class="list-group-item text-center">
     <p class="mb-0 py-4 text-muted">Oups ! Vous n'avez aucun article dans votre panier.</p>
     <p id="sum" class="mb-0"></p>
     </li>`;
-    
-    //Insert html into DOM
-    document
-    .getElementById('myCart')
-    .innerHTML = cartElement;
-    
-    //Inser "0" into "Panier()"
-    document
-    .getElementById('totalNumberOfItems')
-    .textContent = 0;
+    document.getElementById('myCart').innerHTML = cartElement; //Insert html into DOM
+    document.getElementById('totalNumberOfItems').textContent = 0; //Inser "0" into "Panier()"
     console.log('Empty cart displayed.');
 
     disableConfirmButton();
 }
 
+//Disable confirm button when cart is empty
 function disableConfirmButton() {
-    //disable confirm order button
-    document
-    .getElementById('btnConfirmOrder')
-    .classList
-    .add('disabled')
+    document.getElementById('btnConfirmOrder').classList.add('disabled') //disable confirm order button
     console.log('Confirm button disabled');
 }
 
+//Update sum whenever cart item is added/removed
 function updateSum() {
     const sum = dataInSessionStorage.reduce((total, item) => {
         return total + item.price;
       }, 0);
-      
-    document
-    .getElementById('sum')
-    .innerHTML = `<strong>€ ${(Number(sum/100).toFixed(2))}</strong>`;
+    document.getElementById('sum').innerHTML = `<strong>€ ${(Number(sum/100).toFixed(2))}</strong>`;
     console.log('Sum updated.');
 }
         
+//Display total number of items that are added to cart
 function updateTotalNumberOfItems() {
-    //Display total number of items that are added to cart
-    document
-    .getElementById('totalNumberOfItems')
-    .textContent = dataInSessionStorage.length;
+    document.getElementById('totalNumberOfItems').textContent = dataInSessionStorage.length;
     console.log('Total number of items updated.')
 }

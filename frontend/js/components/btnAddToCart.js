@@ -17,9 +17,7 @@ window.addEventListener('load', (event) => {
     
     //Listen to button click
     function listenToBtnClick(){
-        document
-        .getElementById('btnAddToCart')
-        .addEventListener('click', addToCart);
+        document.getElementById('btnAddToCart').addEventListener('click', addToCart);
         console.log('...Listening to button click');
     }
     
