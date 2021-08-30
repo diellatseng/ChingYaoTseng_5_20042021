@@ -1,3 +1,5 @@
+import {dataInSessionStorage} from './utils/variables';
+
 const productId = getProductId();
 let myProducts;
 
@@ -109,7 +111,6 @@ function addItem() {
 
 // Check if item has already been added to cart
 function checkCart() {
-    const dataInSessionStorage = JSON.parse(sessionStorage.getItem('products')); // Get data saved in sessionStorage
     const result = dataInSessionStorage.filter(checkItem = (object) => { // Filter array dataInSessionStorage
         return object.id === myProducts._id && object.lense === lenseSeleted; // Find an object that matches incoming product id and incoming lense at the same time, return object found
     });

@@ -1,4 +1,7 @@
-const dataInSessionStorage = JSON.parse(sessionStorage.getItem('products')); // Get data saved in sessionStorage
+import {dataInSessionStorage} from './utils/variables';
+import {updateSum, updateTotalNumberOfItems} from './utils/functions';
+import removeItem from './components/btnRemove';
+
 let cartElement;
 
 //If sessionStorage is empty, display an empty cart, else display items into cart.
@@ -17,7 +20,7 @@ if (dataInSessionStorage == null || dataInSessionStorage == '') {
             </li>`;
         
         //Generating list item html from data stored in sessionStorage
-        for (i = 0; i < dataInSessionStorage.length; i++) {
+        for (let i = 0; i < dataInSessionStorage.length; i++) {
             html += `
             <li class="list-group-item border-top">
                 <div class="row py-2">
@@ -72,27 +75,12 @@ function disableConfirmButton() {
     console.log('Confirm button disabled');
 }
 
-//Update sum whenever cart item is added/removed
-function updateSum() {
-    const sum = dataInSessionStorage.reduce((total, item) => {
-        return total + item.price;
-      }, 0);
-    document.getElementById('sum').innerHTML = `<strong>€ ${(Number(sum/100).toFixed(2))}</strong>`;
-    console.log('Sum updated.');
-}
-        
-//Display total number of items that are added to cart
-function updateTotalNumberOfItems() {
-    document.getElementById('totalNumberOfItems').textContent = dataInSessionStorage.length;
-    console.log('Total number of items updated.')
-}
-
 //Listening to remove button
 function listenToRemoveButton() {
     const btnRemove = document.getElementsByClassName('btn-danger');
-    for(i = 0; i < btnRemove.length; i++) {
+    for(let i = 0; i < btnRemove.length; i++) {
         let btn = btnRemove[i];
-        btn.addEventListener('click', removeItem);
+        btn.addEventListener('click', (event) => removeItem(event));
     }
     console.log('Listening to remove button...');
 }
@@ -146,18 +134,4 @@ const getData = async () => {
     // Redirect to Thank You page
     console.log('Redirecting to Thank You page.')
     location.href = "thankyou.html"; 
-}
-
-function removeItem(event) {
-    const btnClicked = event.target;
-    const productElement = btnClicked.parentElement.previousElementSibling;
-    const name = productElement.getElementsByClassName('name')[0].textContent; //Get name of item
-    const positionOfItemClicked = dataInSessionStorage.map(x => x.name).indexOf(name); //Find position of this item in 'dataInSessionStorage'
-    dataInSessionStorage.splice(positionOfItemClicked, 1); //Remove this item from string 'dataInSessionStorage'
-    sessionStorage.setItem('products', JSON.stringify(dataInSessionStorage)); //Update sessionStorage after removing this item
-    productElement.parentElement.parentElement.remove(); //Remove element from DOM
-    if(dataInSessionStorage.length == 0) disableConfirmButton(); //Disable confirm button if the last item in cart is removed
-
-    updateSum();
-    updateTotalNumberOfItems();
 }
