@@ -121,4 +121,8 @@ function checkCart() {
     }
 }
 
+function checkItem(object) {
+    return object.id === myProducts._id && object.lense === lenseSeleted; // Find an object that matches incoming product id and incoming lense at the same time, return object found
+}
+
 displayProducts();
