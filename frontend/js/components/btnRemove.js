@@ -1,14 +1,5 @@
 let btnRemove = document.getElementsByClassName('btn-danger');
 
-//Listening to remove button
-function listenToRemoveButton() {
-    for(i = 0; i < btnRemove.length; i++) {
-        let btn = btnRemove[i];
-        btn.addEventListener('click', removeItem);
-    }
-    console.log('Listening to delete button click...');
-}
-
 function removeItem(event) {
     const btnClicked = event.target;
     const productElement = btnClicked.parentElement.previousElementSibling;

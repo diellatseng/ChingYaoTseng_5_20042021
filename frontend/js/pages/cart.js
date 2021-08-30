@@ -40,7 +40,7 @@ if (dataInSessionStorage == null || dataInSessionStorage == '') {
     }
 
     //Execute the following codes when the page is fully loaded (cart list html fully generated)
-    window.addEventListener('load', (event) => {
+    window.addEventListener('load', () => {
         function displayCart(){
             document.getElementById('myCart').innerHTML = cartElement;
             console.log('Cart list displayed.')
@@ -85,4 +85,13 @@ function updateSum() {
 function updateTotalNumberOfItems() {
     document.getElementById('totalNumberOfItems').textContent = dataInSessionStorage.length;
     console.log('Total number of items updated.')
+}
+
+//Listening to remove button
+function listenToRemoveButton() {
+    for(i = 0; i < btnRemove.length; i++) {
+        let btn = btnRemove[i];
+        btn.addEventListener('click', removeItem);
+    }
+    console.log('Listening to remove button...');
 }
