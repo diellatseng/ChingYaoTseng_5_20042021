@@ -111,9 +111,7 @@ function addItem() {
 
 // Check if item has already been added to cart
 function checkCart() {
-    const result = dataInSessionStorage.filter(checkItem = (object) => { // Filter array dataInSessionStorage
-        return object.id === myProducts._id && object.lense === lenseSeleted; // Find an object that matches incoming product id and incoming lense at the same time, return object found
-    });
+    const result = dataInSessionStorage.filter((object) => checkItem(object));
     if(result == ''){ 
         addItem(); // If retruned object is not defined, add item to cart
     } else { 
