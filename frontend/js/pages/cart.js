@@ -89,6 +89,7 @@ function updateTotalNumberOfItems() {
 
 //Listening to remove button
 function listenToRemoveButton() {
+    const btnRemove = document.getElementsByClassName('btn-danger');
     for(i = 0; i < btnRemove.length; i++) {
         let btn = btnRemove[i];
         btn.addEventListener('click', removeItem);

@@ -44,7 +44,7 @@ window.addEventListener('load', () => {
                 addItem();
             } else { // Check if item already exist in cart
                 checkCart();
-            };
+            }
         }
     }
     console.log('[ Page is fully loaded ]');

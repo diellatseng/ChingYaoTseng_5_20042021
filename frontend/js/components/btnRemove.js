@@ -1,5 +1,3 @@
-let btnRemove = document.getElementsByClassName('btn-danger');
-
 function removeItem(event) {
     const btnClicked = event.target;
     const productElement = btnClicked.parentElement.previousElementSibling;
