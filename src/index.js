@@ -19,7 +19,7 @@ const displayProducts = async() => {
                 <div class="card border-light">
                     <img class="card-img-top" src="${product.imageUrl}" alt="">
                     <div class="card-body px-0">
-                        <a class="text-decoration-none text-dark stretched-link" href="/frontend/product.html?id=${product._id}">
+                        <a class="text-decoration-none text-dark stretched-link" href="./pages/product.html?id=${product._id}">
                             <h3 id="productTitle" class="card-title h6 mb-1">
                                 ${product.name}
                             </h3>

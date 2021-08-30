@@ -46,5 +46,5 @@ const getData = async () => {
 
     // Redirect to Thank You page
     console.log('Redirecting to Thank You page.')
-    location.href = "../../frontend/thankYou.html"; 
+    location.href = "thankyou.html"; 
 }
