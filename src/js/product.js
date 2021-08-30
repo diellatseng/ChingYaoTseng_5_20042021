@@ -1,3 +1,5 @@
+import {dataInSessionStorage} from './utils/variables';
+
 const productId = getProductId();
 let myProducts;
 
@@ -50,5 +52,75 @@ const displayProducts = async() => {
         console.log(error);
     }
 };
+
+//Execute the following after page fully loaded
+let lenseSeleted = '';
+let products = [];
+
+window.addEventListener('load', () => {
+    console.log('[ Page is fully loaded ]');
+    
+    // Listen to lense change
+    const lenseList = document.getElementById('lenses');
+    lenseList.addEventListener('change', (e) => {
+        lenseSeleted = e.target.options[e.target.selectedIndex].text;
+        console.log(`[ Lense changed: ${lenseSeleted} ]`);
+    });
+    console.log('...Listening to lense change');
+
+    //Listen to "Add to cart" button
+    document.getElementById('btnAddToCart').addEventListener('click', addToCart);
+    console.log('...Listening to "Add to cart"');
+    
+    //Save lense and product data in sessionStorage
+    function addToCart() {
+        if(lenseSeleted == '') { //Check if lense is seleted
+            window.alert('Veuillez sélectionner une autre lentille.');
+            console.log("Button clicked, user needs to select a lense to proceed.");
+        } else {
+            console.log('...Checking data in sessionStorage');
+            const productSaved = JSON.parse(sessionStorage.getItem('products')) || [];  //if productSaved not provided, default to []
+
+            products = [
+                ...productSaved, 
+                {
+                id: myProducts._id,
+                name: myProducts.name,
+                price: myProducts.price,
+                imageUrl: myProducts.imageUrl,
+                lense: lenseSeleted
+            }];
+
+            if (productSaved == '') { // If cart is empty, add item
+                addItem();
+            } else { // Check if item already exist in cart
+                checkCart();
+            }
+        }
+    }
+  });
+
+// Add item into cart
+function addItem() {
+    sessionStorage.setItem('products', JSON.stringify(products));
+    console.log(`[ Product saved ! ]`);
+    //Go to cart.html
+    console.log("Button clicked!");
+    location.href = "../pages/cart.html"; 
+}
+
+// Check if item has already been added to cart
+function checkCart() {
+    const result = dataInSessionStorage.filter((object) => checkItem(object));
+    if(result == ''){ 
+        addItem(); // If retruned object is not defined, add item to cart
+    } else { 
+        window.alert('Ce produit est déjà dans votre panier. Veuillez sélectionner une autre lentille ou rechercher un autre produit.'); // If returned object is found, alert user
+    }
+}
+
+function checkItem(object) {
+    return object.id === myProducts._id && object.lense === lenseSeleted; // Find an object that matches incoming product id and incoming lense at the same time, return object found
+}
 
 displayProducts();

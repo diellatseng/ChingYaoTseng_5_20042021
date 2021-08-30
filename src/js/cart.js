@@ -1,4 +1,7 @@
-const dataInSessionStorage = JSON.parse(sessionStorage.getItem('products')); // Get data saved in sessionStorage
+import {dataInSessionStorage} from './utils/variables';
+import {updateSum, updateTotalNumberOfItems} from './utils/functions';
+import removeItem from './components/btnRemove';
+
 let cartElement;
 
 //If sessionStorage is empty, display an empty cart, else display items into cart.
@@ -17,7 +20,7 @@ if (dataInSessionStorage == null || dataInSessionStorage == '') {
             </li>`;
         
         //Generating list item html from data stored in sessionStorage
-        for (i = 0; i < dataInSessionStorage.length; i++) {
+        for (let i = 0; i < dataInSessionStorage.length; i++) {
             html += `
             <li class="list-group-item border-top">
                 <div class="row py-2">
@@ -72,27 +75,63 @@ function disableConfirmButton() {
     console.log('Confirm button disabled');
 }
 
-//Update sum whenever cart item is added/removed
-function updateSum() {
-    const sum = dataInSessionStorage.reduce((total, item) => {
-        return total + item.price;
-      }, 0);
-    document.getElementById('sum').innerHTML = `<strong>€ ${(Number(sum/100).toFixed(2))}</strong>`;
-    console.log('Sum updated.');
-}
-        
-//Display total number of items that are added to cart
-function updateTotalNumberOfItems() {
-    document.getElementById('totalNumberOfItems').textContent = dataInSessionStorage.length;
-    console.log('Total number of items updated.')
-}
-
 //Listening to remove button
 function listenToRemoveButton() {
     const btnRemove = document.getElementsByClassName('btn-danger');
-    for(i = 0; i < btnRemove.length; i++) {
+    for(let i = 0; i < btnRemove.length; i++) {
         let btn = btnRemove[i];
-        btn.addEventListener('click', removeItem);
+        btn.addEventListener('click', (event) => removeItem(event));
     }
     console.log('Listening to remove button...');
+}
+
+const myForm = document.getElementById('myForm');
+let orderId;
+
+//Listening to confirm order button
+myForm.addEventListener('submit', function(e) {
+    e.preventDefault(); //Prevent default action when button is clicked 
+    getData();
+});
+
+// Send request to API and get response from server
+const getData = async () => {
+    //Take user inputs in form and convert them into an array of objects
+    const contact = Array.from(document.querySelectorAll('#myForm input')).reduce((acc, input) => ({
+        ...acc, [input.id]:input.value})
+        , []);
+    console.log('Contact data get.');
+    
+    //Take id of each product and combine them into a string
+    const products = dataInSessionStorage.reduce((products, product)=> {
+        products.push(product.id);
+        return products;  // is return causing jumping out of codes? 
+    }, []);
+    console.log('Product IDs get.');
+    
+    //Conbine contact and products into an array of objects
+    const request = {contact, products};
+    console.log('Sending request...')
+    const response = await fetch('http://localhost:3000/api/cameras/order', {
+        method : 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(request)
+    });
+    const jsonData = await response.json();
+    orderId = jsonData.orderId;
+    console.log(`Request sent successful. Server response: Order ID ${orderId}`);
+    
+    // Remove current sessionStorage (products)
+    sessionStorage.removeItem('products');
+    console.log(`sessionStorage: "products" removed.`);
+    
+    // Save order Id into sessionStorage
+    sessionStorage.setItem('orderId', orderId);
+    console.log(`sessionStorage: "orderId" added.`);
+
+    // Redirect to Thank You page
+    console.log('Redirecting to Thank You page.')
+    location.href = "thankyou.html"; 
 }

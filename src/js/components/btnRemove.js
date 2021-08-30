@@ -1,4 +1,7 @@
-function removeItem(event) {
+import {dataInSessionStorage} from '../utils/variables';
+import {updateSum, updateTotalNumberOfItems} from '../utils/functions';
+
+export default function removeItem(event) {
     const btnClicked = event.target;
     const productElement = btnClicked.parentElement.previousElementSibling;
     const name = productElement.getElementsByClassName('name')[0].textContent; //Get name of item
