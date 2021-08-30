@@ -2,13 +2,13 @@ let lenseSeleted ='';
 let products = [];
 
 //Execute the following codes when the page is fully loaded
-window.addEventListener('load', (event) => {
+window.addEventListener('load', () => {
 
     // Listen to lense change
     function listenToLenseChange() {
         const lenseList = document.getElementById('lenses');
         lenseList.addEventListener('change', (e) => {
-            lenseSeleted = lenseList.options[lenseList.selectedIndex].text;
+            lenseSeleted = e.target.options[e.target.selectedIndex].text;
             console.log(`[ Current lense: ${lenseSeleted} ]`);
         });
         console.log('...Listening to lense change');

@@ -46,7 +46,7 @@ if (dataInSessionStorage == null || dataInSessionStorage == '') {
             console.log('Cart list displayed.')
         }
         displayCart();
-        listenToDeleteButton();
+        listenToRemoveButton();
         updateSum();
         updateTotalNumberOfItems()
     });
