@@ -1,25 +1,21 @@
-let lenseSeleted ='';
+let lenseSeleted = '';
 let products = [];
 
 //Execute the following codes when the page is fully loaded
 window.addEventListener('load', () => {
-
-    // Listen to lense change
-    function listenToLenseChange() {
-        const lenseList = document.getElementById('lenses');
-        lenseList.addEventListener('change', (e) => {
-            lenseSeleted = e.target.options[e.target.selectedIndex].text;
-            console.log(`[ Current lense: ${lenseSeleted} ]`);
-        });
-        console.log('...Listening to lense change');
-        listenToBtnClick();
-    }
+    console.log('[ Page is fully loaded ]');
     
-    //Listen to button click
-    function listenToBtnClick(){
-        document.getElementById('btnAddToCart').addEventListener('click', addToCart);
-        console.log('...Listening to button click');
-    }
+    // Listen to lense change
+    const lenseList = document.getElementById('lenses');
+    lenseList.addEventListener('change', (e) => {
+        lenseSeleted = e.target.options[e.target.selectedIndex].text;
+        console.log(`[ Lense changed: ${lenseSeleted} ]`);
+    });
+    console.log('...Listening to lense change');
+
+    //Listen to "Add to cart" button
+    document.getElementById('btnAddToCart').addEventListener('click', addToCart);
+    console.log('...Listening to "Add to cart"');
     
     //Save lense and product data in sessionStorage
     function addToCart() {
@@ -47,8 +43,6 @@ window.addEventListener('load', () => {
             }
         }
     }
-    console.log('[ Page is fully loaded ]');
-    listenToLenseChange();
   });
 
 // Add item into cart
