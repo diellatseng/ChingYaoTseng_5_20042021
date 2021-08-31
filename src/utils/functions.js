@@ -14,3 +14,9 @@ export function updateTotalNumberOfItems() {
     document.getElementById('totalNumberOfItems').textContent = dataInSessionStorage.length;
     console.log('Total number of items updated.')
 }
+
+//Disable confirm button when cart is empty
+export function disableConfirmButton() {
+    document.getElementById('btnConfirmOrder').classList.add('disabled') //disable confirm order button
+    console.log('Confirm button disabled');
+}

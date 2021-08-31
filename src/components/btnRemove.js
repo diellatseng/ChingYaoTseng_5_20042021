@@ -1,5 +1,5 @@
 import {dataInSessionStorage} from '../utils/variables';
-import {updateSum, updateTotalNumberOfItems} from '../utils/functions';
+import {updateSum, updateTotalNumberOfItems, disableConfirmButton} from '../utils/functions';
 
 export default function removeItem(event) {
     const btnClicked = event.target;

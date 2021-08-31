@@ -1,5 +1,5 @@
 import {dataInSessionStorage} from './utils/variables';
-import {updateSum, updateTotalNumberOfItems} from './utils/functions';
+import {updateSum, updateTotalNumberOfItems, disableConfirmButton} from './utils/functions';
 import removeItem from './components/btnRemove';
 
 let cartElement;
@@ -29,7 +29,7 @@ if (dataInSessionStorage == null || dataInSessionStorage == '') {
                     </div>
                     <div class="col-8 col-md-9">
                         <h3 class="name h5 mb-0">${dataInSessionStorage[i].name}</h3>
-                        <small class="text-break text-muted">Lense chosen: ${dataInSessionStorage[i].lense}</small>
+                        <small class="text-break text-muted">Lentille choisie: ${dataInSessionStorage[i].lense}</small>
                         <p class="price mt-2">€ ${(Number(dataInSessionStorage[i].price/100).toFixed(2))}</p>
                     </div>
                     <div class="d-inline text-end">
@@ -67,12 +67,6 @@ function displayEmptyCart() {
     console.log('Empty cart displayed.');
 
     disableConfirmButton();
-}
-
-//Disable confirm button when cart is empty
-function disableConfirmButton() {
-    document.getElementById('btnConfirmOrder').classList.add('disabled') //disable confirm order button
-    console.log('Confirm button disabled');
 }
 
 //Listening to remove button
