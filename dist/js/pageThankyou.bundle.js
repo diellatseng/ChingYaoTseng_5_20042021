@@ -1,0 +1,1 @@
+(()=>{const e=sessionStorage.getItem("orderId");document.getElementById("orderId").textContent=` ${e}`})();

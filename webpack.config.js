@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  mode: "development", //OR production
+  mode: "production", 
   entry: {
     index: "./src/index.js",
     pageProduct: './src/product.js',
