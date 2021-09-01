@@ -1,1 +1,1 @@
-(()=>{const e=sessionStorage.getItem("orderId");document.getElementById("orderId").textContent=` ${e}`})();
+(()=>{var e=sessionStorage.getItem("orderId");document.getElementById("orderId").textContent=" ".concat(e)})();
