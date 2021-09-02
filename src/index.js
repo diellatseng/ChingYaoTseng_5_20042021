@@ -1,4 +1,4 @@
-const apiUrl = 'http://localhost:3000/api/cameras/';
+import {apiUrl} from '../src/utils/variables';
 
 const getData = async () => {                           //Get product data from server, store string into myProducts//
     let response = await fetch(apiUrl);

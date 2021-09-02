@@ -1,10 +1,11 @@
 import {dataInSessionStorage} from './utils/variables';
+import {apiUrl} from './utils/variables';
 
 let myProducts;
 const productId = new URL(window.location.href).searchParams.get('id');                     //Get product id from url
 
 const getData = async () => {                                                               // Fetch product data from server
-    const response = await fetch(`http://localhost:3000/api/cameras/${productId}`);
+    const response = await fetch(`${apiUrl}${productId}`);
     const jsonData = await response.json();
     return jsonData;
 };
