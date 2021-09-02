@@ -1,42 +1,29 @@
 import {dataInSessionStorage} from './utils/variables';
 
 let myProducts;
-const productId = new URL(window.location.href).searchParams.get('id'); // //Get product id from url//
+const productId = new URL(window.location.href).searchParams.get('id');                     //Get product id from url//
 
-// Fetch product data from server//
-const getData = async () => {
+const getData = async () => {                                                               // Fetch product data from server//
     const response = await fetch(`http://localhost:3000/api/cameras/${productId}`);
     const jsonData = await response.json();
     return jsonData;
-}
+};
 
-// Display product information using data saved in myProducts//
-const displayProducts = async() => {
+const displayProducts = async() => {                                                        // Display product information using data saved in myProducts//
     try {
         myProducts = await getData();
-        //Display title according to product name //
-        document.getElementById('title')
-                .textContent = `Produit | ${myProducts.name} - Orinoco France`;
-    
-        //Display product image //
-        document.getElementById("productImage")
-                .innerHTML = `<img class="img-fluid" src="${myProducts.imageUrl}" alt="">`;
-    
-        //Display product name //                
-        document.getElementById('productName')
-                .textContent = myProducts.name;
-        
-        //Display product price //
-        document.getElementById('productPrice')
-                .textContent += `€ ${(Number(myProducts.price/100).toFixed(2))}`;
-        
-        //Display product description //
-        document.getElementById('description')
-                .textContent = myProducts.description;
-    
-        //Display product lenses into option values //
-        const lenses = myProducts.lenses;
-        let lenseHtml = '<option>Choisissez votre lentille</option>'; //Adding default option to lense list
+        document.getElementById('title')        
+                .textContent = `Produit | ${myProducts.name} - Orinoco France`;             //Display title according to product name //
+        document.getElementById("productImage") 
+                .innerHTML = `<img class="img-fluid" src="${myProducts.imageUrl}" alt="">`; //Display product image //
+        document.getElementById('productName')   
+                .textContent = myProducts.name;                                             //Display product name //  
+        document.getElementById('productPrice') 
+                .textContent += `€ ${(Number(myProducts.price/100).toFixed(2))}`;           //Display product price //
+        document.getElementById('description')  
+                .textContent = myProducts.description;                                      //Display product description //
+        const lenses = myProducts.lenses;                                                   //Display product lenses into option values //
+        let lenseHtml = '<option>Choisissez votre lentille</option>'; 
         for (let lense of lenses) {
             lenseHtml += `<option>${lense}</option>`;
         }
@@ -48,33 +35,30 @@ const displayProducts = async() => {
     }
 };
 
-//Execute the following after page fully loaded
 let lenseSeleted = '';
 let products = [];
 
-window.addEventListener('load', () => {
+window.addEventListener('load', () => {                                                     //Execute the following after page fully loaded
     console.log('[ Page is fully loaded ]');
     
-    // Listen to lense change
-    const lenseList = document.getElementById('lenses');
+    const lenseList = document.getElementById('lenses');                                    // Listen to lense change
     lenseList.addEventListener('change', (e) => {
         lenseSeleted = e.target.options[e.target.selectedIndex].text;
         console.log(`[ Lense changed: ${lenseSeleted} ]`);
     });
     console.log('...Listening to lense change');
 
-    //Listen to "Add to cart" button
-    document.getElementById('btnAddToCart').addEventListener('click', addToCart);
+    document.getElementById('btnAddToCart').addEventListener('click', addToCart);           //Listen to "Add to cart" button
     console.log('...Listening to "Add to cart"');
     
-    //Save lense and product data in sessionStorage
-    function addToCart() {
-        if(lenseSeleted == '') { //Check if lense is seleted
+
+    function addToCart() {                                                                  //Save lense and product data in sessionStorage
+        if(lenseSeleted == '') {                                                            //Check if lense is seleted
             window.alert('Veuillez sélectionner une autre lentille.');
             console.log("Button clicked, user needs to select a lense to proceed.");
         } else {
             console.log('...Checking data in sessionStorage');
-            const productSaved = JSON.parse(sessionStorage.getItem('products')) || [];  //if productSaved not provided, default to []
+            const productSaved = JSON.parse(sessionStorage.getItem('products')) || [];      //if productSaved not provided, default to []
 
             products = [
                 ...productSaved, 
@@ -86,36 +70,26 @@ window.addEventListener('load', () => {
                 lense: lenseSeleted
             }];
 
-            if (productSaved == '') { // If cart is empty, add item
+            if (productSaved == '') {                                                       // If cart is empty, add item
                 addItem();
-            } else { // Check if item already exist in cart
-                checkCart();
+            } else {                                                                        // Else, check if this item has already been added to cart
+                const result = dataInSessionStorage.filter((object) => {
+                    return object.id === myProducts._id && object.lense === lenseSeleted;   // Find an object that matches incoming product id and incoming lense at the same time, return object found
+                });
+                if(result == '') {                                                          // If retruned object is not defined, add item to cart
+                    addItem(); 
+                } else {                                                                    // If returned object is found, alert user
+                    window.alert('Ce produit est déjà dans votre panier. Veuillez sélectionner une autre lentille ou rechercher un autre produit.'); 
+                }
             }
         }
     }
-  });
+});
 
-// Add item into cart
-function addItem() {
+function addItem() {                                                                        // Add item into cart
     sessionStorage.setItem('products', JSON.stringify(products));
     console.log(`[ Product saved ! ]`);
-    //Go to cart.html
-    console.log("Button clicked!");
-    location.href = "../pages/cart.html"; 
-}
-
-// Check if item has already been added to cart
-function checkCart() {
-    const result = dataInSessionStorage.filter((object) => checkItem(object));
-    if(result == ''){ 
-        addItem(); // If retruned object is not defined, add item to cart
-    } else { 
-        window.alert('Ce produit est déjà dans votre panier. Veuillez sélectionner une autre lentille ou rechercher un autre produit.'); // If returned object is found, alert user
-    }
-}
-
-function checkItem(object) {
-    return object.id === myProducts._id && object.lense === lenseSeleted; // Find an object that matches incoming product id and incoming lense at the same time, return object found
+    location.href = "../pages/cart.html"; //Go to cart.html
 }
 
 displayProducts();
