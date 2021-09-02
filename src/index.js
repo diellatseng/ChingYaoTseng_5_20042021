@@ -1,12 +1,12 @@
 import {apiUrl} from '../src/utils/variables';
 
-const getData = async () => {                           //Get product data from server, store string into myProducts//
+const getData = async () => {                           // Get product data from server, store string into myProducts
     let response = await fetch(apiUrl);
     let jsonData = await response.json();
     return jsonData;
 }
 
-const displayProducts = async() => {                    // For each product in myProducts, create one card//
+const displayProducts = async() => {                    // For each product in myProducts, create one card
     try {
         const myProducts = await getData();
         const divProducts   = document.getElementById('divProducts');

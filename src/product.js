@@ -1,28 +1,27 @@
 import {dataInSessionStorage, apiUrl} from './utils/variables';
 
-let myProducts;
-const productId = new URL(window.location.href).searchParams.get('id');                     //Get product id from url
-
+const productId = new URL(window.location.href).searchParams.get('id');                     // Get product id from url, so that we can display product information accordingly
 const getData = async () => {                                                               // Fetch product data from server
     const response = await fetch(`${apiUrl}${productId}`);
     const jsonData = await response.json();
     return jsonData;
 };
 
+let myProducts;
 const displayProducts = async() => {                                                        // Display product information using data saved in myProducts
     try {
         myProducts = await getData();
         document.getElementById('title')        
-                .textContent = `Produit | ${myProducts.name} - Orinoco France`;             //Display title according to product name 
+                .textContent = `Produit | ${myProducts.name} - Orinoco France`;             // Display title according to product name 
         document.getElementById("productImage") 
-                .innerHTML = `<img class="img-fluid" src="${myProducts.imageUrl}" alt="">`; //Display product image 
+                .innerHTML = `<img class="img-fluid" src="${myProducts.imageUrl}" alt="">`; // Display product image 
         document.getElementById('productName')   
-                .textContent = myProducts.name;                                             //Display product name 
+                .textContent = myProducts.name;                                             // Display product name 
         document.getElementById('productPrice') 
-                .textContent += `€ ${(Number(myProducts.price/100).toFixed(2))}`;           //Display product price
+                .textContent += `€ ${(Number(myProducts.price/100).toFixed(2))}`;           // Display product price
         document.getElementById('description')  
-                .textContent = myProducts.description;                                      //Display product description 
-        const lenses = myProducts.lenses;                                                   //Display product lenses into option values 
+                .textContent = myProducts.description;                                      // Display product description 
+        const lenses = myProducts.lenses;                                                   // Display product lenses into option values 
         let lenseHtml = '<option>Choisissez votre lentille</option>'; 
         for (let lense of lenses) {
             lenseHtml += `<option>${lense}</option>`;
@@ -37,8 +36,7 @@ const displayProducts = async() => {                                            
 
 let lenseSeleted = '';
 let products = [];
-
-window.addEventListener('load', () => {                                                     //Execute the following after page fully loaded
+window.addEventListener('load', () => {                                                     // Execute the following after page fully loaded
     console.log('[ Page is fully loaded ]');
     
     const lenseList = document.getElementById('lenses');                                    // Listen to lense change
@@ -46,19 +44,14 @@ window.addEventListener('load', () => {                                         
         lenseSeleted = e.target.options[e.target.selectedIndex].text;
         console.log(`[ Lense changed: ${lenseSeleted} ]`);
     });
-    console.log('...Listening to lense change');
+    document.getElementById('btnAddToCart').addEventListener('click', addToCart);           // Listen to "Add to cart" button
 
-    document.getElementById('btnAddToCart').addEventListener('click', addToCart);           //Listen to "Add to cart" button
-    console.log('...Listening to "Add to cart"');
-    
-
-    function addToCart() {                                                                  //Save lense and product data in sessionStorage
-        if(lenseSeleted == '') {                                                            //Check if lense is seleted
+    function addToCart() {                                                                  // Save lense and product data in sessionStorage
+        if(lenseSeleted == '') {                                                            // Check if lense is seleted
             window.alert('Veuillez sélectionner une autre lentille.');
-            console.log("Button clicked, user needs to select a lense to proceed.");
         } else {
             console.log('...Checking data in sessionStorage');
-            const productSaved = JSON.parse(sessionStorage.getItem('products')) || [];      //if productSaved not provided, default to []
+            const productSaved = JSON.parse(sessionStorage.getItem('products')) || [];      // if productSaved not provided, default to []
 
             products = [
                 ...productSaved, 
@@ -89,7 +82,7 @@ window.addEventListener('load', () => {                                         
 function addItem() {                                                                        // Add item into cart
     sessionStorage.setItem('products', JSON.stringify(products));
     console.log(`[ Product saved ! ]`);
-    location.href = "../pages/cart.html"; //Go to cart.html
+    location.href = "../pages/cart.html";                                                   // Go to cart.html after product is saved in sessionStorage
 }
 
 displayProducts();
