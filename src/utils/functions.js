@@ -1,22 +1,19 @@
 import {dataInSessionStorage} from './variables';
 
-//Update sum whenever cart item is added/removed
-export function updateSum() {
+export function updateSum() {                                           //Update sum whenever cart item is added/removed
     const sum = dataInSessionStorage.reduce((total, item) => {
         return total + item.price;
       }, 0);
     document.getElementById('sum').innerHTML = `<strong>€ ${(Number(sum/100).toFixed(2))}</strong>`;
     console.log('Sum updated.');
 }
-        
-//Display total number of items that are added to cart
-export function updateTotalNumberOfItems() {
+
+export function updateTotalNumberOfItems() {                            //Update total number of items whenever cart item is added/removed
     document.getElementById('totalNumberOfItems').textContent = dataInSessionStorage.length;
     console.log('Total number of items updated.')
 }
 
-//Disable confirm button when cart is empty
-export function disableConfirmButton() {
-    document.getElementById('btnConfirmOrder').classList.add('disabled') //disable confirm order button
+export function disableConfirmButton() {                                //Disable confirm button when cart is empty
+    document.getElementById('btnConfirmOrder').classList.add('disabled') 
     console.log('Confirm button disabled');
 }

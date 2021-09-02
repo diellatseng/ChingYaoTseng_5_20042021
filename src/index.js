@@ -1,14 +1,12 @@
 const apiUrl = 'http://localhost:3000/api/cameras/';
 
-//Get product data from server, store string into myProducts//
-const getData = async () => {
+const getData = async () => {                           //Get product data from server, store string into myProducts//
     let response = await fetch(apiUrl);
     let jsonData = await response.json();
     return jsonData;
 }
 
-// For each product in myProducts, create one card//
-const displayProducts = async() => {
+const displayProducts = async() => {                    // For each product in myProducts, create one card//
     try {
         const myProducts = await getData();
         const divProducts   = document.getElementById('divProducts');

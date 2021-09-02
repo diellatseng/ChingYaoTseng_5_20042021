@@ -1,28 +1,28 @@
 import {dataInSessionStorage} from './utils/variables';
 
 let myProducts;
-const productId = new URL(window.location.href).searchParams.get('id');                     //Get product id from url//
+const productId = new URL(window.location.href).searchParams.get('id');                     //Get product id from url
 
-const getData = async () => {                                                               // Fetch product data from server//
+const getData = async () => {                                                               // Fetch product data from server
     const response = await fetch(`http://localhost:3000/api/cameras/${productId}`);
     const jsonData = await response.json();
     return jsonData;
 };
 
-const displayProducts = async() => {                                                        // Display product information using data saved in myProducts//
+const displayProducts = async() => {                                                        // Display product information using data saved in myProducts
     try {
         myProducts = await getData();
         document.getElementById('title')        
-                .textContent = `Produit | ${myProducts.name} - Orinoco France`;             //Display title according to product name //
+                .textContent = `Produit | ${myProducts.name} - Orinoco France`;             //Display title according to product name 
         document.getElementById("productImage") 
-                .innerHTML = `<img class="img-fluid" src="${myProducts.imageUrl}" alt="">`; //Display product image //
+                .innerHTML = `<img class="img-fluid" src="${myProducts.imageUrl}" alt="">`; //Display product image 
         document.getElementById('productName')   
-                .textContent = myProducts.name;                                             //Display product name //  
+                .textContent = myProducts.name;                                             //Display product name 
         document.getElementById('productPrice') 
-                .textContent += `€ ${(Number(myProducts.price/100).toFixed(2))}`;           //Display product price //
+                .textContent += `€ ${(Number(myProducts.price/100).toFixed(2))}`;           //Display product price
         document.getElementById('description')  
-                .textContent = myProducts.description;                                      //Display product description //
-        const lenses = myProducts.lenses;                                                   //Display product lenses into option values //
+                .textContent = myProducts.description;                                      //Display product description 
+        const lenses = myProducts.lenses;                                                   //Display product lenses into option values 
         let lenseHtml = '<option>Choisissez votre lentille</option>'; 
         for (let lense of lenses) {
             lenseHtml += `<option>${lense}</option>`;
