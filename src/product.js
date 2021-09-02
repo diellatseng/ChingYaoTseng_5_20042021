@@ -1,12 +1,7 @@
 import {dataInSessionStorage} from './utils/variables';
 
-const productId = getProductId();
 let myProducts;
-
-//Get product id from url//
-function getProductId() {
-    return new URL(window.location.href).searchParams.get('id');
-}
+const productId = new URL(window.location.href).searchParams.get('id'); // //Get product id from url//
 
 // Fetch product data from server//
 const getData = async () => {
