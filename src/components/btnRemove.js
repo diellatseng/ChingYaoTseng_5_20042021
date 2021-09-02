@@ -1,5 +1,5 @@
 import {dataInSessionStorage} from '../utils/variables';
-import {updateSum, updateTotalNumberOfItems, disableConfirmButton} from '../utils/functions';
+import {updateSum, updateNumberOfItems, disableConfirmButton} from '../utils/functions';
 
 export default function removeItem(event) {
     const btnClicked = event.target;
@@ -12,5 +12,5 @@ export default function removeItem(event) {
     if(dataInSessionStorage.length == 0) disableConfirmButton();                        //Disable confirm button if the last item in cart is removed
 
     updateSum();
-    updateTotalNumberOfItems();
+    updateNumberOfItems();
 }
