@@ -1,5 +1,4 @@
-import {dataInSessionStorage} from './utils/variables';
-import {apiUrl} from './utils/variables';
+import {dataInSessionStorage, apiUrl} from './utils/variables';
 
 let myProducts;
 const productId = new URL(window.location.href).searchParams.get('id');                     //Get product id from url
