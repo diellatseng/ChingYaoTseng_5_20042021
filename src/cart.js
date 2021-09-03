@@ -1,4 +1,4 @@
-import {dataInSessionStorage} from './utils/variables';
+import {apiUrl, dataInSessionStorage} from './utils/variables';
 import {updateSum, updateNumberOfItems, disableConfirmButton} from './utils/functions';
 import removeItem from './components/btnRemove';
 
@@ -73,7 +73,7 @@ const getData = async () => {                                               // S
     console.log('Product IDs get.');
     const request = {contact, products};                                    // Conbine contact and products into an array of objects
     console.log('Sending request...')
-    const response = await fetch('http://localhost:3000/api/cameras/order', {
+    const response = await fetch(`${apiUrl}order`, {
         method : 'POST',
         headers: {
             'Content-Type': 'application/json'
