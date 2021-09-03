@@ -37,12 +37,10 @@ const displayProducts = async() => {                                            
 let lenseSeleted = '';
 let products = [];
 window.addEventListener('load', () => {                                                     // Execute the following after page fully loaded
-    console.log('[ Page is fully loaded ]');
-    
     const lenseList = document.getElementById('lenses');                                    // Listen to lense change
     lenseList.addEventListener('change', (e) => {
         lenseSeleted = e.target.options[e.target.selectedIndex].text;
-        console.log(`[ Lense changed: ${lenseSeleted} ]`);
+        console.log(`Lense changed: ${lenseSeleted}`);
     });
     document.getElementById('btnAddToCart').addEventListener('click', addToCart);           // Listen to "Add to cart" button
 
@@ -81,7 +79,7 @@ window.addEventListener('load', () => {                                         
 
 function addItem() {                                                                        // Add item into cart
     sessionStorage.setItem('products', JSON.stringify(products));
-    console.log(`[ Product saved ! ]`);
+    console.log('Product saved !');
     location.href = "../pages/cart.html";                                                   // Go to cart.html after product is saved in sessionStorage
 }
 
