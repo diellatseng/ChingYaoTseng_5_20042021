@@ -1,6 +1,5 @@
 import {apiUrl, dataInSessionStorage} from './utils/variables';
-import {updateSum, updateNumberOfItems, disableConfirmButton} from './utils/functions';
-import removeItem from './components/btnRemove';
+import {updateSum, updateNumberOfItems, disableConfirmButton, removeItem} from './utils/functions';
 
 let cartElement;
 if (dataInSessionStorage == null || dataInSessionStorage == '') {           // If sessionStorage(cart) is empty, display an empty cart:
