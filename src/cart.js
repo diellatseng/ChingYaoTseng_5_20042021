@@ -38,7 +38,6 @@ if (dataInlocalStorage == null || dataInlocalStorage == '') {               // I
                 </div>
             </li>`;
         }
-        console.log('Cart list html ready.')
         return html;
     };
 
