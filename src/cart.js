@@ -2,14 +2,14 @@ import {apiUrl, dataInlocalStorage} from './utils/variables';
 import {updateSum, updateNumberOfItems, disableConfirmButton, removeItem} from './utils/functions';
 
 let cartElement;
-if (dataInlocalStorage == null || dataInlocalStorage == '') {           // If localStorage(cart) is empty, display an empty cart:
+if (dataInlocalStorage == null || dataInlocalStorage == '') {               // If localStorage(cart) is empty, display an empty cart:
     cartElement = ` 
     <li class="list-group-item text-center">
     <p class="mb-0 py-4 text-muted">Oups ! Vous n'avez aucun article dans votre panier.</p>
     <p id="sum" class="mb-0"></p>
     </li>`;
     document.getElementById('myCart').innerHTML = cartElement;              // Insert empty cart html into DOM
-    document.getElementById('numberOfItems').textContent = 0;          // Insert "0" into "Panier()"
+    document.getElementById('numberOfItems').textContent = 0;               // Insert "0" into "Panier()"
     console.log('Empty cart displayed.');
 
     disableConfirmButton();
@@ -20,7 +20,7 @@ if (dataInlocalStorage == null || dataInlocalStorage == '') {           // If lo
                 <p class="mb-0">Total (EUR)</p>
                 <p id="sum" class="mb-0"></p>
             </li>`;
-        for (let i = 0; i < dataInlocalStorage.length; i++) {             // List item html - generating from data stored in localStorage
+        for (let i = 0; i < dataInlocalStorage.length; i++) {               // List item html - generating from data stored in localStorage
             html += `
             <li class="list-group-item border-top">
                 <div class="row py-2">
@@ -65,7 +65,7 @@ const getData = async () => {                                               // S
         ...acc, [input.id]:input.value})
         , []);
     console.log('Contact data get.');
-    const products = dataInlocalStorage.reduce((products, product)=> {    // Take id of each product and combine them into a string
+    const products = dataInlocalStorage.reduce((products, product)=> {      // Take id of each product and combine them into a string
         products.push(product.id);
         return products;
     }, []);
@@ -80,7 +80,7 @@ const getData = async () => {                                               // S
         body: JSON.stringify(request)
     });
     const jsonData = await response.json();
-    localStorage.removeItem('products');                                  // Remove current localStorage (products)
-    localStorage.setItem('orderId', jsonData.orderId);                    // Save order Id into localStorage
-    location.href = "confirmation.html";                                        // Redirect to Thank You page
+    localStorage.removeItem('products');                                    // Remove current localStorage (products)
+    localStorage.setItem('orderId', jsonData.orderId);                      // Save order Id into localStorage
+    location.href = "confirmation.html";                                    // Redirect to Thank You page
 }
