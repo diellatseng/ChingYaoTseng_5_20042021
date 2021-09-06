@@ -64,9 +64,9 @@ window.addEventListener('load', () => {                                         
             if (productSaved == '') {                                                       // If cart is empty, add item
                 addItem();
             } else {                                                                        // Else, check if this item has already been added to cart
-                const result = dataInlocalStorage.filter((object) => {
-                    return object.id === myProducts._id && object.lens === lensSeleted;     // Find an object that matches incoming product id and incoming lens at the same time, return object found
-                });
+                const result = dataInlocalStorage.filter((object) => (
+                    object.id === myProducts._id && object.lens === lensSeleted             // Find an object that matches incoming product id and incoming lens at the same time, return object found
+                ));
                 if(result == '') {                                                          // If retruned object is not defined, add item to cart
                     addItem(); 
                 } else {                                                                    // If returned object is found, alert user
