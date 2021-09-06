@@ -9,7 +9,7 @@ export function updateSum() {                                           //Update
 }
 
 export function updateNumberOfItems() {                            //Update total number of items whenever cart item is added/removed
-    document.getElementById('totalNumberOfItems').textContent = dataInSessionStorage.length;
+    document.getElementById('numberOfItems').textContent = dataInSessionStorage.length;
     console.log('Total number of items updated.')
 }
 

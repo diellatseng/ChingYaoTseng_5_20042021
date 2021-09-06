@@ -9,7 +9,7 @@ if (dataInSessionStorage == null || dataInSessionStorage == '') {           // I
     <p id="sum" class="mb-0"></p>
     </li>`;
     document.getElementById('myCart').innerHTML = cartElement;              // Insert empty cart html into DOM
-    document.getElementById('totalNumberOfItems').textContent = 0;          // Insert "0" into "Panier()"
+    document.getElementById('numberOfItems').textContent = 0;          // Insert "0" into "Panier()"
     console.log('Empty cart displayed.');
 
     disableConfirmButton();
