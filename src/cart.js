@@ -29,7 +29,7 @@ if (dataInlocalStorage == null || dataInlocalStorage == '') {           // If lo
                     </div>
                     <div class="col-8 col-md-9">
                         <h3 class="name h5 mb-0">${dataInlocalStorage[i].name}</h3>
-                        <small class="text-break text-muted">Lentille choisie: ${dataInlocalStorage[i].lense}</small>
+                        <small class="text-break text-muted">Lentille choisie: ${dataInlocalStorage[i].lens}</small>
                         <p class="price mt-2">€ ${(Number(dataInlocalStorage[i].price/100).toFixed(2))}</p>
                     </div>
                     <div class="d-inline text-end">

@@ -22,34 +22,34 @@ const displayProducts = async() => {                                            
         document.getElementById('description')  
                 .textContent = myProducts.description;                                      // Display product description 
         const lenses = myProducts.lenses;                                                   // Display product lenses into option values 
-        let lenseHtml = '<option>Choisissez votre lentille</option>'; 
-        for (let lense of lenses) {
-            lenseHtml += `<option>${lense}</option>`;
+        let lensHtml = '<option>Choisissez votre lentille</option>'; 
+        for (let lens of lenses) {
+            lensHtml += `<option>${lens}</option>`;
         }
         document.getElementById('lenses')
-                .innerHTML = lenseHtml;
+                .innerHTML = lensHtml;
     } catch(error) {
         window.alert(error);
         console.log(error);
     }
 };
 
-let lenseSeleted = '';
+let lensSeleted = '';
 let products = [];
 window.addEventListener('load', () => {                                                     // Execute the following after page fully loaded
-    const lenseList = document.getElementById('lenses');                                    // Listen to lense change
-    lenseList.addEventListener('change', (e) => {
-        lenseSeleted = e.target.options[e.target.selectedIndex].text;
-        console.log(`Lense changed: ${lenseSeleted}`);
+    const lensList = document.getElementById('lenses');                                     // Listen to lens change
+    lensList.addEventListener('change', (e) => {
+        lensSeleted = e.target.options[e.target.selectedIndex].text;
+        console.log(`Lens changed: ${lensSeleted}`);
     });
     document.getElementById('btnAddToCart').addEventListener('click', addToCart);           // Listen to "Add to cart" button
 
-    function addToCart() {                                                                  // Save lense and product data in localStorage
-        if(lenseSeleted == '') {                                                            // Check if lense is seleted
+    function addToCart() {                                                                  // Save lens and product data in localStorage
+        if(lensSeleted == '') {                                                             // Check if lens is seleted
             window.alert('Veuillez sélectionner une autre lentille.');
         } else {
             console.log('...Checking data in localStorage');
-            const productSaved = JSON.parse(localStorage.getItem('products')) || [];      // if productSaved not provided, default to []
+            const productSaved = JSON.parse(localStorage.getItem('products')) || [];        // if productSaved not provided, default to []
 
             products = [
                 ...productSaved, 
@@ -58,14 +58,14 @@ window.addEventListener('load', () => {                                         
                 name: myProducts.name,
                 price: myProducts.price,
                 imageUrl: myProducts.imageUrl,
-                lense: lenseSeleted
+                lens: lensSeleted
             }];
 
             if (productSaved == '') {                                                       // If cart is empty, add item
                 addItem();
             } else {                                                                        // Else, check if this item has already been added to cart
                 const result = dataInlocalStorage.filter((object) => {
-                    return object.id === myProducts._id && object.lense === lenseSeleted;   // Find an object that matches incoming product id and incoming lense at the same time, return object found
+                    return object.id === myProducts._id && object.lens === lensSeleted;     // Find an object that matches incoming product id and incoming lens at the same time, return object found
                 });
                 if(result == '') {                                                          // If retruned object is not defined, add item to cart
                     addItem(); 
