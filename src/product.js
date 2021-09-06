@@ -1,4 +1,4 @@
-import {dataInSessionStorage, apiUrl} from './utils/variables';
+import {dataInlocalStorage, apiUrl} from './utils/variables';
 
 const productId = new URL(window.location.href).searchParams.get('id');                     // Get product id from url, so that we can display product information accordingly
 const getData = async () => {                                                               // Fetch product data from server
@@ -44,12 +44,12 @@ window.addEventListener('load', () => {                                         
     });
     document.getElementById('btnAddToCart').addEventListener('click', addToCart);           // Listen to "Add to cart" button
 
-    function addToCart() {                                                                  // Save lense and product data in sessionStorage
+    function addToCart() {                                                                  // Save lense and product data in localStorage
         if(lenseSeleted == '') {                                                            // Check if lense is seleted
             window.alert('Veuillez sélectionner une autre lentille.');
         } else {
-            console.log('...Checking data in sessionStorage');
-            const productSaved = JSON.parse(sessionStorage.getItem('products')) || [];      // if productSaved not provided, default to []
+            console.log('...Checking data in localStorage');
+            const productSaved = JSON.parse(localStorage.getItem('products')) || [];      // if productSaved not provided, default to []
 
             products = [
                 ...productSaved, 
@@ -64,7 +64,7 @@ window.addEventListener('load', () => {                                         
             if (productSaved == '') {                                                       // If cart is empty, add item
                 addItem();
             } else {                                                                        // Else, check if this item has already been added to cart
-                const result = dataInSessionStorage.filter((object) => {
+                const result = dataInlocalStorage.filter((object) => {
                     return object.id === myProducts._id && object.lense === lenseSeleted;   // Find an object that matches incoming product id and incoming lense at the same time, return object found
                 });
                 if(result == '') {                                                          // If retruned object is not defined, add item to cart
@@ -78,9 +78,9 @@ window.addEventListener('load', () => {                                         
 });
 
 function addItem() {                                                                        // Add item into cart
-    sessionStorage.setItem('products', JSON.stringify(products));
+    localStorage.setItem('products', JSON.stringify(products));
     console.log('Product saved !');
-    location.href = "../pages/cart.html";                                                   // Go to cart.html after product is saved in sessionStorage
+    location.href = "../pages/cart.html";                                                   // Go to cart.html after product is saved in localStorage
 }
 
 displayProducts();

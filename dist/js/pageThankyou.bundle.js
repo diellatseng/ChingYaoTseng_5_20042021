@@ -1,1 +1,1 @@
-(()=>{var e=sessionStorage.getItem("orderId");document.getElementById("orderId").textContent=" ".concat(e)})();
+(()=>{var e=localStorage.getItem("orderId");document.getElementById("orderId").textContent=" ".concat(e),console.log("Order Id received from server: ".concat(e)),localStorage.removeItem("orderId")})();

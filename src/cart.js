@@ -1,8 +1,8 @@
-import {apiUrl, dataInSessionStorage} from './utils/variables';
+import {apiUrl, dataInlocalStorage} from './utils/variables';
 import {updateSum, updateNumberOfItems, disableConfirmButton, removeItem} from './utils/functions';
 
 let cartElement;
-if (dataInSessionStorage == null || dataInSessionStorage == '') {           // If sessionStorage(cart) is empty, display an empty cart:
+if (dataInlocalStorage == null || dataInlocalStorage == '') {           // If localStorage(cart) is empty, display an empty cart:
     cartElement = ` 
     <li class="list-group-item text-center">
     <p class="mb-0 py-4 text-muted">Oups ! Vous n'avez aucun article dans votre panier.</p>
@@ -20,17 +20,17 @@ if (dataInSessionStorage == null || dataInSessionStorage == '') {           // I
                 <p class="mb-0">Total (EUR)</p>
                 <p id="sum" class="mb-0"></p>
             </li>`;
-        for (let i = 0; i < dataInSessionStorage.length; i++) {             // List item html - generating from data stored in sessionStorage
+        for (let i = 0; i < dataInlocalStorage.length; i++) {             // List item html - generating from data stored in localStorage
             html += `
             <li class="list-group-item border-top">
                 <div class="row py-2">
                     <div class="col-4 col-md-3">
-                        <img class="img-fluid" src="${dataInSessionStorage[i].imageUrl}" alt="">
+                        <img class="img-fluid" src="${dataInlocalStorage[i].imageUrl}" alt="">
                     </div>
                     <div class="col-8 col-md-9">
-                        <h3 class="name h5 mb-0">${dataInSessionStorage[i].name}</h3>
-                        <small class="text-break text-muted">Lentille choisie: ${dataInSessionStorage[i].lense}</small>
-                        <p class="price mt-2">€ ${(Number(dataInSessionStorage[i].price/100).toFixed(2))}</p>
+                        <h3 class="name h5 mb-0">${dataInlocalStorage[i].name}</h3>
+                        <small class="text-break text-muted">Lentille choisie: ${dataInlocalStorage[i].lense}</small>
+                        <p class="price mt-2">€ ${(Number(dataInlocalStorage[i].price/100).toFixed(2))}</p>
                     </div>
                     <div class="d-inline text-end">
                         <button type="button" class="btn btn-danger">supprimer</button>
@@ -65,7 +65,7 @@ const getData = async () => {                                               // S
         ...acc, [input.id]:input.value})
         , []);
     console.log('Contact data get.');
-    const products = dataInSessionStorage.reduce((products, product)=> {    // Take id of each product and combine them into a string
+    const products = dataInlocalStorage.reduce((products, product)=> {    // Take id of each product and combine them into a string
         products.push(product.id);
         return products;
     }, []);
@@ -80,7 +80,7 @@ const getData = async () => {                                               // S
         body: JSON.stringify(request)
     });
     const jsonData = await response.json();
-    sessionStorage.removeItem('products');                                  // Remove current sessionStorage (products)
-    sessionStorage.setItem('orderId', jsonData.orderId);                    // Save order Id into sessionStorage
+    localStorage.removeItem('products');                                  // Remove current localStorage (products)
+    localStorage.setItem('orderId', jsonData.orderId);                    // Save order Id into localStorage
     location.href = "thankyou.html";                                        // Redirect to Thank You page
 }
