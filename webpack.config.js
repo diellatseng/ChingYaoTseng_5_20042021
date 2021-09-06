@@ -7,7 +7,7 @@ module.exports = {
     index: "./src/index.js",
     pageProduct: './src/product.js',
     pageCart: './src/cart.js',
-    pageThankyou: './src/thankyou.js',
+    pageConfirmation: './src/confirmation.js',
   },
   output: {
     filename: "[name].bundle.js",

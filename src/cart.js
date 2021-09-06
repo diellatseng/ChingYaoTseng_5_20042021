@@ -82,5 +82,5 @@ const getData = async () => {                                               // S
     const jsonData = await response.json();
     localStorage.removeItem('products');                                  // Remove current localStorage (products)
     localStorage.setItem('orderId', jsonData.orderId);                    // Save order Id into localStorage
-    location.href = "thankyou.html";                                        // Redirect to Thank You page
+    location.href = "confirmation.html";                                        // Redirect to Thank You page
 }
