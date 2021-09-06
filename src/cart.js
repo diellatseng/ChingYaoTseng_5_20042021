@@ -10,7 +10,7 @@ if (dataInlocalStorage == null || dataInlocalStorage == '') {               // I
     </li>`;
     document.getElementById('myCart').innerHTML = cartElement;              // Insert empty cart html into DOM
     document.getElementById('numberOfItems').textContent = 0;               // Insert "0" into "Panier()"
-    console.log('Empty cart displayed.');
+    console.log("Empty cart displayed.");
 
     disableConfirmButton();
 } else {                                                                    // Else generate cart item html:
