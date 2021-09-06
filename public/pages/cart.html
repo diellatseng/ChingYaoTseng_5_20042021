@@ -9,31 +9,31 @@
 </head>
 <body class="container d-flex flex-column h-100">
     <header>
-        <div>
-            <nav>
-                <!--nav for small screen-->
-                <div class="d-lg-none py-2 my-2 border-bottom">
-                    <a href="../index.html" class="d-flex flex-wrap align-items-center text-dark text-decoration-none">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
-                        </svg>
-                        <p class="text-uppercase ps-2 mb-0">Accueil</p>
-                    </a>
-                </div>
-
-                <!--nav for screen from large-->
-                <div class="d-none d-lg-flex position-relative justify-content-center py-2 my-2 py-lg-3  border-bottom">
-                    <a href="../index.html" class="text-decoration-none text-dark">
-                        <p class="logo h1">Orinoco</p>
-                    </a>
-                    <a href="cart.html">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" fill="currentColor" class="bi bi-bag position-absolute top-50 end-0 translate-middle-y text-dark" viewBox="0 0 16 16">
-                            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-                        </svg>
-                    </a>
-                </div>
-            </nav>
-        </div>
+        <ul class="py-2 my-2 border-bottom d-flex justify-content-between justify-content-lg-center position-relative list-unstyled">
+            <li>
+                <!--for small screen-->
+                <a href="../index.html" class="d-lg-none d-flex text-dark text-decoration-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" fill="currentColor" class="bi bi-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+                    </svg>
+                    <p class="text-uppercase ps-2 mb-0">Accueil</p>
+                </a>
+            </li>
+            <li>
+                <!--for large screen-->
+                <a href="../index.html" class="d-none d-lg-flex text-decoration-none text-dark">
+                    <p class="logo h1">Orinoco</p>
+                </a>
+            </li>
+            <li>
+                <!--cart-->
+                <a href="cart.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.2rem" height="1.2rem" fill="currentColor" class="bi bi-bag position-absolute top-50 end-0 translate-middle-y text-dark" viewBox="0 0 16 16">
+                        <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
+                    </svg>
+                </a>
+            </li>
+        </ul>
     </header>
 
     <main>
