@@ -74,7 +74,13 @@ window.addEventListener('load', () => {                                         
             }
         }
     }
+
+    const btnClose = document.getElementById('btnClose');                                   // When button "close" in toast alert is clicked, reload page
+    btnClose.addEventListener ('click', () => {
+        location.reload();
+    })
 });
+
 
 function addItem() {                                                                        // Add item into cart
     localStorage.setItem('products', JSON.stringify(products));
@@ -82,8 +88,9 @@ function addItem() {                                                            
     const toast = document.querySelector('.toast');
     const myToast = new Toast(toast);
 
+    document.getElementById('btnAddToCart').classList.add('disabled');
+    document.getElementById('lenses').disabled = true;
     myToast.show();
-    window.setTimeout(function(){location.reload()}, 550);                                  // Reload page to update localStorage
 }
 
 displayProducts();

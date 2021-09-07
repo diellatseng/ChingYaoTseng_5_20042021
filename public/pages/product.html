@@ -64,15 +64,14 @@
         </div>
 
         <!-- Bootstrap toast -->
-        <div class="toast align-items-center text-white bg-primary border-0 position-fixed bottom-0 end-0" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="d-flex">
-                <div class="toast-body fs-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg me-1" viewBox="0 0 16 16">
-                        <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
-                    </svg>
-                    Votre article a été ajouté au panier !
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+        <div class="toast position-fixed top-50 start-50 translate-middle py-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false">
+            <div class="toast-body fs-6">
+                <p class="mb-0 text-center">
+                    Article a été ajouté au panier !
+                </p>
+            </div>
+            <div class="mt-2 pt-2 border-top text-center">
+                <button type="button" id="btnClose" class="btn btn-primary btn-sm" data-bs-dismiss="toast">Fermer</button>
             </div>
         </div>
     </main>
