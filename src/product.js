@@ -31,7 +31,6 @@ const displayProducts = async() => {                                            
                 .innerHTML = lensHtml;
     } catch(error) {
         window.alert(error);
-        console.log(error);
     }
 };
 
@@ -42,7 +41,6 @@ window.addEventListener('load', () => {                                         
     const lensList = document.getElementById('lenses');                                     // Listen to lens change
     lensList.addEventListener('change', (e) => {
         lensSeleted = e.target.options[e.target.selectedIndex].text;
-        console.log(`Lens changed: ${lensSeleted}`);
     });
     document.getElementById('btnAddToCart').addEventListener('click', addToCart);           // Listen to "Add to cart" button
 
@@ -50,7 +48,6 @@ window.addEventListener('load', () => {                                         
         if(lensSeleted == '') {                                                             // Check if lens is seleted
             window.alert('Veuillez sélectionner une autre lentille.');
         } else {
-            console.log('...Checking data in localStorage');
             const productSaved = JSON.parse(localStorage.getItem('products')) || [];        // if productSaved not provided, default to []
 
             products = [

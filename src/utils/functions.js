@@ -5,17 +5,14 @@ export function updateSum() {                                                   
         return total + item.price;
       }, 0);
     document.getElementById('sum').innerHTML = `<strong>€ ${(Number(sum/100).toFixed(2))}</strong>`;
-    console.log('Sum updated.');
 }
 
 export function updateNumberOfItems() {                                                 //Update total number of items whenever cart item is added/removed
     document.getElementById('numberOfItems').textContent = dataInlocalStorage.length;
-    console.log('Total number of items updated.')
 }
 
 export function disableConfirmButton() {                                                //Disable confirm button when cart is empty
     document.getElementById('btnConfirmOrder').classList.add('disabled') 
-    console.log('Confirm button disabled');
 }
 
 export function removeItem(event) {
