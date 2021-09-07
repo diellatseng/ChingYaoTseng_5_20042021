@@ -10,7 +10,6 @@ if (dataInlocalStorage == null || dataInlocalStorage == '') {               // I
     </li>`;
     document.getElementById('myCart').innerHTML = cartElement;              // Insert empty cart html into DOM
     document.getElementById('numberOfItems').textContent = 0;               // Insert "0" into "Panier()"
-    console.log("Empty cart displayed.");
 
     disableConfirmButton();
 } else {                                                                    // Else generate cart item html:
@@ -63,14 +62,11 @@ const getData = async () => {                                               // S
     const contact = Array.from(document.querySelectorAll('#myForm input')).reduce((acc, input) => ({    //Take user inputs in form and convert them into an array of objects
         ...acc, [input.id]:input.value})
         , []);
-    console.log('Contact data get.');
     const products = dataInlocalStorage.reduce((products, product)=> {      // Take id of each product and combine them into a string
         products.push(product.id);
         return products;
     }, []);
-    console.log('Product IDs get.');
     const request = {contact, products};                                    // Conbine contact and products into an array of objects
-    console.log('Sending request...')
     const response = await fetch(`${apiUrl}order`, {
         method : 'POST',
         headers: {
