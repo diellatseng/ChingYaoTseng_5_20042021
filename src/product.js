@@ -1,4 +1,5 @@
 import {dataInlocalStorage, apiUrl} from './utils/variables';
+import {Toast} from 'bootstrap';
 
 const productId = new URL(window.location.href).searchParams.get('id');                     // Get product id from url, so that we can display product information accordingly
 const getData = async () => {                                                               // Fetch product data from server
@@ -36,6 +37,7 @@ const displayProducts = async() => {                                            
 
 let lensSeleted = '';
 let products = [];
+
 window.addEventListener('load', () => {                                                     // Execute the following after page fully loaded
     const lensList = document.getElementById('lenses');                                     // Listen to lens change
     lensList.addEventListener('change', (e) => {
@@ -79,8 +81,12 @@ window.addEventListener('load', () => {                                         
 
 function addItem() {                                                                        // Add item into cart
     localStorage.setItem('products', JSON.stringify(products));
-    console.log('Product saved !');
-    location.href = "../pages/cart.html";                                                   // Go to cart.html after product is saved in localStorage
+   
+    const toast = document.querySelector('.toast');
+    const myToast = new Toast(toast);
+
+    myToast.show();
+    window.setTimeout(function(){location.reload()}, 550);                                  // Reload page to update localStorage
 }
 
 displayProducts();

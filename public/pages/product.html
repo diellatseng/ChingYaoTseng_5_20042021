@@ -37,15 +37,15 @@
             </ul>
         </nav>
     </header>
-
+    
     <main>
-        <div class="row mt-3">
+        <div class="row mt-3">   
             <div id="productImage" class="col-12 col-lg-6">
                 <img class="img-fluid" src="" alt="">
             </div>
             
             <div class="col-12 col-lg-6">
-                <h1 id="productName" class="h2 mt-2">Price: </h1>
+                <h1 id="productName" class="h2 mt-2"></h1>
                 <p id="productPrice"></p>
                 <div class="col text-center">
                     <select id="lenses" class="form-select mt-2" aria-label="Default select example">
@@ -58,7 +58,21 @@
                     <article class="mb-3 text-start">
                         <p id="description"></p>
                     </article>
+                    
                 </div>
+            </div>
+        </div>
+
+        <!-- Bootstrap toast -->
+        <div class="toast align-items-center text-white bg-primary border-0 position-fixed bottom-0 end-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body fs-6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg me-1" viewBox="0 0 16 16">
+                        <path d="M13.485 1.431a1.473 1.473 0 0 1 2.104 2.062l-7.84 9.801a1.473 1.473 0 0 1-2.12.04L.431 8.138a1.473 1.473 0 0 1 2.084-2.083l4.111 4.112 6.82-8.69a.486.486 0 0 1 .04-.045z"/>
+                    </svg>
+                    Votre article a été ajouté au panier !
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
         </div>
     </main>
