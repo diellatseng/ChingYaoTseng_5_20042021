@@ -12,7 +12,7 @@ export function updateNumberOfItems() {                                         
 }
 
 export function updateCartNotif() {                                                 //Update total number of items whenever cart item is added/removed
-    if(dataInlocalStorage == null && dataInlocalStorage == ""){
+    if(dataInlocalStorage == null || dataInlocalStorage == ""){
         document.getElementById('cartNotif').style.display = "none";
     } else {
         document.getElementById('cartNotifNum').textContent = dataInlocalStorage.length;
@@ -36,4 +36,5 @@ export function removeItem(event) {
 
     updateSum();
     updateNumberOfItems();
+    updateCartNotif();
 }

@@ -1,5 +1,5 @@
 import {apiUrl, dataInlocalStorage} from './utils/variables';
-import {updateSum, updateNumberOfItems, disableConfirmButton, removeItem} from './utils/functions';
+import {updateSum, updateNumberOfItems, updateCartNotif, disableConfirmButton, removeItem} from './utils/functions';
 
 let cartElement;
 if (dataInlocalStorage == null || dataInlocalStorage == '') {               // If localStorage(cart) is empty, display an empty cart:
@@ -79,3 +79,5 @@ const getData = async () => {                                               // S
     localStorage.setItem('orderId', jsonData.orderId);                      // Save order Id into localStorage
     location.href = "confirmation.html";                                    // Redirect to Thank You page
 }
+
+updateCartNotif();

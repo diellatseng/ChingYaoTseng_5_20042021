@@ -1,4 +1,5 @@
 import {dataInlocalStorage, apiUrl} from './utils/variables';
+import {updateCartNotif} from '../src/utils/functions';
 import {Toast} from 'bootstrap';
 
 const productId = new URL(window.location.href).searchParams.get('id');                     // Get product id from url, so that we can display product information accordingly
@@ -94,3 +95,4 @@ function addItem() {                                                            
 }
 
 displayProducts();
+updateCartNotif();
