@@ -19,7 +19,12 @@
                 </li>
                 <li class="position-absolute top-50 end-0 translate-middle-y">
                     <a href="pages/cart.html">
-                        <i class="bi bi-bag text-dark"></i>
+                        <span class="position-relative bi bi-bag text-dark">
+                            <span id="cartNotif" class="position-absolute top-50 end-50 badge text-light bg-danger border border-light rounded-circle">
+                                <span id="cartNotifNum"></span>
+                                <span class="visually-hidden">articles dans le panier</span>
+                            </span>
+                        </span>
                     </a>
                 </li>
             </ul>

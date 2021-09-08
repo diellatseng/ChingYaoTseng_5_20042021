@@ -9,6 +9,7 @@ export function updateSum() {                                                   
 
 export function updateNumberOfItems() {                                                 //Update total number of items whenever cart item is added/removed
     document.getElementById('numberOfItems').textContent = dataInlocalStorage.length;
+    document.getElementById('cartNotifNum').textContent = dataInlocalStorage.length;
 }
 
 export function disableConfirmButton() {                                                //Disable confirm button when cart is empty

@@ -4054,6 +4054,27 @@ textarea.form-control-lg {
   filter: invert(1) grayscale(100%) brightness(200%);
 }
 
+.badge {
+  display: inline-block;
+  padding: 0.35em 0.65em;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+}
+.badge:empty {
+  display: none;
+}
+
+.btn .badge {
+  position: relative;
+  top: -1px;
+}
+
 .align-baseline {
   vertical-align: baseline !important;
 }
@@ -8705,6 +8726,7 @@ textarea.form-control-lg {
   font-family: "belligerent_madnessregular", cursive;
   color: #371F32;
   margin-bottom: 0;
+  font-size: 1.6em;
 }
 
 [class^=bi-]::before, [class*=" bi-"]::before {
