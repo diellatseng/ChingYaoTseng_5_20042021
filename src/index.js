@@ -1,4 +1,5 @@
 import {apiUrl} from '../src/utils/variables';
+import {updateCartNotif} from '../src/utils/functions';
 
 const getData = async () => {                           // Get product data from server, store string into myProducts
     let response = await fetch(apiUrl);
@@ -37,3 +38,4 @@ const displayProducts = async() => {                    // For each product in m
 }
 
 displayProducts();
+updateCartNotif();

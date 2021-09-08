@@ -8,8 +8,16 @@ export function updateSum() {                                                   
 }
 
 export function updateNumberOfItems() {                                                 //Update total number of items whenever cart item is added/removed
-    document.getElementById('numberOfItems').textContent = dataInlocalStorage.length;
-    document.getElementById('cartNotifNum').textContent = dataInlocalStorage.length;
+        document.getElementById('numberOfItems').textContent = dataInlocalStorage.length;
+}
+
+export function updateCartNotif() {                                                 //Update total number of items whenever cart item is added/removed
+    if(dataInlocalStorage == null && dataInlocalStorage == ""){
+        document.getElementById('cartNotif').style.display = "none";
+    } else {
+        document.getElementById('cartNotifNum').textContent = dataInlocalStorage.length;
+        document.getElementById('cartNotif').style.display = "block";
+    }
 }
 
 export function disableConfirmButton() {                                                //Disable confirm button when cart is empty
