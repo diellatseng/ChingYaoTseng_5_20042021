@@ -27,6 +27,7 @@ $primary: #ad89a6;
 @import "../../node_modules/bootstrap/scss/list-group";
 @import "../../node_modules/bootstrap/scss/toasts";
 @import "../../node_modules/bootstrap/scss/close";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 
 // 5. Optionally include utilities API last to generate classes based on the Sass map in `_utililies.scss`
 @import "../../node_modules/bootstrap/scss/utilities/api";
@@ -34,8 +35,20 @@ $primary: #ad89a6;
 // 6. Add additional custom code here
 @import url('https://fonts.googleapis.com/css2?family=Lakki+Reddy&display=swap');
 
+@font-face {
+     font-family: 'belligerent_madnessregular';
+     src: url('../../src/font/belligerent-webfont.woff');
+     font-weight: normal;
+     font-style: normal;
+ }
+ 
+
 .logo {
-     font-family: 'Lakki Reddy', cursive;
+     font-family: 'belligerent_madnessregular', cursive;
      color: #371F32;
-     margin-bottom: -.8rem;
+     margin-bottom: 0;
+}
+
+[class^="bi-"]::before, [class*=" bi-"]::before {
+     vertical-align: unset;
 }

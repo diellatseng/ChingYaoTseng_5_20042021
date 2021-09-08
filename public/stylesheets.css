@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
 @import url("https://fonts.googleapis.com/css2?family=Lakki+Reddy&display=swap");
 :root {
   --bs-blue: #0d6efd;
@@ -8694,10 +8695,20 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+@font-face {
+  font-family: "belligerent_madnessregular";
+  src: url("../../src/font/belligerent-webfont.woff");
+  font-weight: normal;
+  font-style: normal;
+}
 .logo {
-  font-family: "Lakki Reddy", cursive;
+  font-family: "belligerent_madnessregular", cursive;
   color: #371F32;
-  margin-bottom: -0.8rem;
+  margin-bottom: 0;
+}
+
+[class^=bi-]::before, [class*=" bi-"]::before {
+  vertical-align: unset;
 }
 
 /*# sourceMappingURL=stylesheets.css.map */
