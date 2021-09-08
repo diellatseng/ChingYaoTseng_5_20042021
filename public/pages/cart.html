@@ -47,20 +47,29 @@
                     <ul id="myCart" class="list-group d-flex"></ul>
                 </div>
 
-                <form id="myForm" class="col-lg-7 mb-3">
+                <form id="myForm" class="col-lg-7 mb-3 needs-validation" novalidate>
                     <div class="row g-2 my-3">
                         <h2 class="mt-lg-0">Contact</h2>
                         <div class="col-md-6">
                             <label for="firstName" class="form-label">Prénom</label>
-                            <input type="text" class="form-control" name="firstName" id="firstName" pattern="[A-z]{2,}" required>
+                            <input type="text" class="form-control" name="firstName" id="firstName" placeholder="Tony" pattern="[A-z]{2,}" required>
+                            <div class="invalid-feedback">
+                                Au moins deux caractères
+                            </div>
                         </div>
                         <div class="col-md-6">
                             <label for="lastName" class="form-label">Nom</label>
-                            <input type="text" class="form-control" name="lastName" id="lastName" required>
+                            <input type="text" class="form-control" name="lastName" id="lastName" placeholder="Stark" pattern="[A-z]{2,}" required>
+                            <div class="invalid-feedback">
+                                Au moins deux caractères
+                            </div>
                         </div>
                         <div class="col">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="exemple@domaine.com" required>
+                            <input type="email" class="form-control" name="email" id="email" placeholder="exemple@domaine.com" pattern="\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b" required>
+                            <div class="invalid-feedback">
+                                Email (adresse électronique) non valide. Une adresse électronique valide ne peut contenir que des lettres latines, des chiffres, '@' et '.'.
+                            </div>
                         </div>
                     </div>
 
@@ -68,19 +77,19 @@
                         <h2>Adresse</h2>
                         <div class="col-12">
                             <label for="address" class="form-label">Adresse</label>
-                            <input type="text" class="form-control" name="address" id="address" required>
+                            <input type="text" class="form-control" name="address" id="address" placeholder="11 Allee des Roses" required>
                         </div>
                         <div class="col-12">
                             <label for="address2" class="form-label">Adresse 2 (facultatif)</label>
-                            <input type="text" class="form-control" name="address2" id="address2">
-                        </div>
-                        <div class="col-12 col-lg-8">
-                            <label for="city" class="form-label">Commune</label>
-                            <input type="text" class="form-control" name="city" id="city" required>
+                            <input type="text" class="form-control" name="address2" placeholder="BP 77" id="address2">
                         </div>
                         <div class="col-6 col-lg-4">
                             <label for="postalCode" class="form-label">Code postal (facultatif)</label>
-                            <input type="number" class="form-control" name="postalCode" id="postalCode">
+                            <input type="number" class="form-control" name="postalCode" id="postalCode" placeholder="75001">
+                        </div>
+                        <div class="col-12 col-lg-8">
+                            <label for="city" class="form-label">Commune</label>
+                            <input type="text" class="form-control" name="city" id="city" placeholder="Paris" required>
                         </div>
                     </div>
 

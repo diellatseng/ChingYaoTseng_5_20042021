@@ -54,9 +54,14 @@ if (dataInlocalStorage == null || dataInlocalStorage == '') {               // I
 
 const myForm = document.getElementById('myForm');
 myForm.addEventListener('submit', function(e) {                             // Listening to confirm order button
-    e.preventDefault();                                                     // Prevent default action when button is clicked 
-    getData();
-});
+    e.preventDefault();
+    e.stopPropagation();
+    if(!myForm.checkValidity()) {
+        myForm.classList.add('was-validated');
+    } else {
+        getData();
+    }
+}, false);
 
 const getData = async () => {                                               // Send request to API and get response from server
     const contact = Array.from(document.querySelectorAll('#myForm input')).reduce((acc, input) => ({    //Take user inputs in form and convert them into an array of objects
