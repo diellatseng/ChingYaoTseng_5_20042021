@@ -77,10 +77,15 @@ window.addEventListener('load', () => {                                         
         }
     }
 
-    const btnClose = document.getElementById('btnClose');                                   // When button "close" in toast alert is clicked, reload page
-    btnClose.addEventListener ('click', () => {
+    const btnContinue = document.getElementById('btnContinue');                              // When button "Continuer mes achats" in toast alert is clicked, reload page
+    btnContinue.addEventListener ('click', () => {
         location.reload();
     })
+    const btnCart = document.getElementById('btnCart');                                      // When button "Voir mon panier" in toast alert is clicked, redirect to cart.html
+    btnCart.addEventListener ('click', () => {
+        window.location.href = "cart.html";
+    })
+
 });
 
 
