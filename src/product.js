@@ -42,11 +42,12 @@ window.addEventListener('load', () => {                                         
     const lensList = document.getElementById('lenses');                                     // Listen to lens change
     lensList.addEventListener('change', (e) => {
         lensSeleted = e.target.options[e.target.selectedIndex].text;
+        console.log(lensSeleted);
     });
     document.getElementById('btnAddToCart').addEventListener('click', addToCart);           // Listen to "Add to cart" button
 
     function addToCart() {                                                                  // Save lens and product data in localStorage
-        if(lensSeleted == '') {                                                             // Check if lens is seleted
+        if(lensSeleted == '' || `Choisissez votre lentille`) {                                                             // Check if lens is seleted
             window.alert('Veuillez sélectionner une autre lentille.');
         } else {
             const productSaved = JSON.parse(localStorage.getItem('products')) || [];        // if productSaved not provided, default to []
