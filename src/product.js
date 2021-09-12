@@ -47,7 +47,7 @@ window.addEventListener('load', () => {                                         
     document.getElementById('btnAddToCart').addEventListener('click', addToCart);           // Listen to "Add to cart" button
 
     function addToCart() {                                                                  // Save lens and product data in localStorage
-        if(lensSeleted == '' || `Choisissez votre lentille`) {                                                             // Check if lens is seleted
+        if(lensSeleted == '' || lensSeleted === "Choisissez votre lentille") {                                                             // Check if lens is seleted
             window.alert('Veuillez sélectionner une autre lentille.');
         } else {
             const productSaved = JSON.parse(localStorage.getItem('products')) || [];        // if productSaved not provided, default to []
