@@ -2,37 +2,41 @@ import {dataInlocalStorage, apiUrl} from './utils/variables';
 import {updateCartNotif} from '../src/utils/functions';
 import {Toast} from 'bootstrap';
 
-const productId = new URL(window.location.href).searchParams.get('id');                     // Get product id from url, so that we can display product information accordingly
-const getData = async () => {                                                               // Fetch product data from server
-    const response = await fetch(`${apiUrl}${productId}`);
-    const jsonData = await response.json();
-    return jsonData;
-};
-
-let myProducts;
-const displayProducts = async() => {                                                        // Display product information using data saved in myProducts
+const productId = new URL(location.href).searchParams.get('id');                     // Get product id from url, so that we can display product information accordingly
+const getData = async () => {
     try {
-        myProducts = await getData();
-        document.getElementById('title')        
-                .textContent = `Produit | ${myProducts.name} - Orinoco France`;             // Display title according to product name 
-        document.getElementById("productImage") 
-                .innerHTML = `<img class="img-fluid" src="${myProducts.imageUrl}" alt="">`; // Display product image 
-        document.getElementById('productName')   
-                .textContent = myProducts.name;                                             // Display product name 
-        document.getElementById('productPrice') 
-                .textContent += `€ ${(Number(myProducts.price/100).toFixed(2))}`;           // Display product price
-        document.getElementById('description')  
-                .textContent = myProducts.description;                                      // Display product description 
-        const lenses = myProducts.lenses;                                                   // Display product lenses into option values 
-        let lensHtml = '<option>Choisissez votre lentille</option>'; 
-        for (let lens of lenses) {
-            lensHtml += `<option>${lens}</option>`;
+        const response = await fetch(`${apiUrl}${productId}`);
+        if (response.status === 200) {
+            const jsonData = await response.json();
+            return jsonData;
+        } else {
+            location.href = "../index.html"
         }
-        document.getElementById('lenses')
-                .innerHTML = lensHtml;
     } catch(error) {
         window.alert(error);
     }
+}; 
+
+let myProducts;
+const displayProducts = async() => {                                                        // Display product information using data saved in myProducts
+    myProducts = await getData();
+    document.getElementById('title')        
+            .textContent = `Produit | ${myProducts.name} - Orinoco France`;             // Display title according to product name 
+    document.getElementById("productImage") 
+            .innerHTML = `<img class="img-fluid" src="${myProducts.imageUrl}" alt="">`; // Display product image 
+    document.getElementById('productName')   
+            .textContent = myProducts.name;                                             // Display product name 
+    document.getElementById('productPrice') 
+            .textContent += `€ ${(Number(myProducts.price/100).toFixed(2))}`;           // Display product price
+    document.getElementById('description')  
+            .textContent = myProducts.description;                                      // Display product description 
+    const lenses = myProducts.lenses;                                                   // Display product lenses into option values 
+    let lensHtml = '<option>Choisissez votre lentille</option>'; 
+    for (let lens of lenses) {
+        lensHtml += `<option>${lens}</option>`;
+    }
+    document.getElementById('lenses')
+            .innerHTML = lensHtml;
 };
 
 let lensSeleted = '';
@@ -83,7 +87,7 @@ window.addEventListener('load', () => {                                         
     })
     const btnCart = document.getElementById('btnCart');                                      // When button "Voir mon panier" in toast alert is clicked, redirect to cart.html
     btnCart.addEventListener ('click', () => {
-        window.location.href = "cart.html";
+        location.href = "cart.html";
     })
 
 });
