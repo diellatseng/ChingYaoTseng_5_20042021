@@ -21,7 +21,7 @@
   },
   "scripts": {
     "test": "eslint ./src/*.js",
-    "sass": "sass --watch ./src/scss/custom.scss:./public/stylesheets.css",
+    "sass": "sass --watch --style=compressed ./src/scss/custom.scss:./public/stylesheets.css",
     "build": "webpack --watch"
   },
   "repository": {
