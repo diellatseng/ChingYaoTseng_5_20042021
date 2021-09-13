@@ -53,7 +53,7 @@ if (dataInlocalStorage == null || dataInlocalStorage == '') {               // I
 }
 
 const myForm = document.getElementById('myForm');
-myForm.addEventListener('submit', function(e) {                             // Listening to confirm order button
+myForm.addEventListener('submit', (e) => {                                  // Listening to confirm order button
     e.preventDefault();
     e.stopPropagation();
     if(!myForm.checkValidity()) {

@@ -29,7 +29,7 @@ export function removeItem(event) {
     const productElement = btnClicked.parentElement.previousElementSibling;
     const name = productElement.getElementsByClassName('name')[0].textContent;                  // Get name of item
     const lens = productElement.getElementsByClassName('lens')[0].textContent;                  // Get lens of item
-    const found = dataInlocalStorage.find((item) => {                                          // Find an object in the array that has both item's name and lens
+    const found = dataInlocalStorage.find((item) => {                                           // Find an object in the array that has both item's name and lens
         return item.name === name && item.lens === lens;
     });
     const positionOfItemClicked = dataInlocalStorage.indexOf(found);                            // Find position of this item in 'dataInlocalStorage'

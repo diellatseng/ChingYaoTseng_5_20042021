@@ -33,7 +33,6 @@ const displayProducts = async() => {                    // For each product in m
         }
     } catch(error) {
         window.alert(error);
-        console.log(error);
     }
 }
 

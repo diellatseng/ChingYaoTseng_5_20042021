@@ -5,10 +5,12 @@
 
 // 2. Include any default variable overrides here
 $primary: #79456f;
-$danger: #cf7d70;
+$danger: #ca402b;
 $success: #3da873;
 $info:#ad8994;
 $badge-font-size: .8rem;
+$toast-background-color: white;
+$toast-padding-x: 1.25rem;
 
 // 3. Include remainder of required Bootstrap stylesheets
 @import "../../node_modules/bootstrap/scss/variables";

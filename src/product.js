@@ -2,7 +2,7 @@ import {dataInlocalStorage, apiUrl} from './utils/variables';
 import {updateCartNotif} from '../src/utils/functions';
 import {Toast} from 'bootstrap';
 
-const productId = new URL(location.href).searchParams.get('id');                     // Get product id from url, so that we can display product information accordingly
+const productId = new URL(location.href).searchParams.get('id');    // Get product id from url, so that we can display product information accordingly
 const getData = async () => {
     try {
         const response = await fetch(`${apiUrl}${productId}`);
@@ -10,15 +10,15 @@ const getData = async () => {
             const jsonData = await response.json();
             return jsonData;
         } else {
-            location.href = "../index.html"
+            location.href = "../index.html"                         // If page is not found (404) or there's any other client error, redirect to home page
         }
     } catch(error) {
-        window.alert(error);
+        window.alert(error);                                        // If there's server error (5xx) alert user
     }
 }; 
 
 let myProducts;
-const displayProducts = async() => {                                                        // Display product information using data saved in myProducts
+const displayProducts = async() => {                                                    // Display product information using data saved in myProducts
     myProducts = await getData();
     document.getElementById('title')        
             .textContent = `Produit | ${myProducts.name} - Orinoco France`;             // Display title according to product name 
@@ -46,7 +46,6 @@ window.addEventListener('load', () => {                                         
     const lensList = document.getElementById('lenses');                                     // Listen to lens change
     lensList.addEventListener('change', (e) => {
         lensSeleted = e.target.options[e.target.selectedIndex].text;
-        console.log(lensSeleted);
     });
     document.getElementById('btnAddToCart').addEventListener('click', addToCart);           // Listen to "Add to cart" button
 
