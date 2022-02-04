@@ -2,6 +2,7 @@
 Parcours Développeur web d'OpenClassrooms
 
 
+![app_screenshot_home](https://user-images.githubusercontent.com/37021876/152554669-b3d04468-3ca0-4a85-91f5-d2c9b8ab23ff.PNG)
 
 https://user-images.githubusercontent.com/37021876/145799309-e9706438-af20-4e36-b527-41fa11b52e26.MP4
 
